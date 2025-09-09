@@ -10,7 +10,19 @@
 import type { StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
+import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
+
+export type InputComponentEvents = NonNullable<unknown>;
+
+export const InputComponent: StencilReactComponent<InputComponentElement, InputComponentEvents> = /*@__PURE__*/ createComponent<InputComponentElement, InputComponentEvents>({
+    tagName: 'input-component',
+    elementClass: InputComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as InputComponentEvents,
+    defineCustomElement: defineInputComponent
+});
 
 export type MyComponentEvents = NonNullable<unknown>;
 

@@ -1,0 +1,40 @@
+.container-input {
+    border-bottom: 1px solid black;
+    margin-top: 1rem;
+}
+
+.container-input-component {
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem;
+}
+
+.input {
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    appearance: none;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+    /* Para Firefox */
+    appearance: none;
+    /* Para otros navegadores */
+}
+
+.label {
+    font-weight: bold;
+}
+
+.label-error {
+    font-size: 0.8rem;
+    color: red;
+    margin-top: 0.3rem;
+}

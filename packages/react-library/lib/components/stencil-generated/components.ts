@@ -12,6 +12,7 @@ import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
+import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
 
 export type InputComponentEvents = NonNullable<unknown>;
 
@@ -33,4 +34,15 @@ export const MyComponent: StencilReactComponent<MyComponentElement, MyComponentE
     react: React,
     events: {} as MyComponentEvents,
     defineCustomElement: defineMyComponent
+});
+
+export type TestComponentEvents = NonNullable<unknown>;
+
+export const TestComponent: StencilReactComponent<TestComponentElement, TestComponentEvents> = /*@__PURE__*/ createComponent<TestComponentElement, TestComponentEvents>({
+    tagName: 'test-component',
+    elementClass: TestComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as TestComponentEvents,
+    defineCustomElement: defineTestComponent
 });

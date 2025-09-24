@@ -6,7 +6,7 @@ Clonar el repo de la siguiente ruta: **https://github.com/Celula-Micro-Frontends
 
 ## paso 2
 
-Ir al repositorio del paso anterior y crear una nueva rama y ubicarse en ella en su repositorio local como se muestra en la siguiente imagen
+Ir al repositorio del paso anterior y crear una nueva rama **feature** a partir de la rama **develop** y ubicarse en ella en su repositorio local como se muestra en la siguiente imagen
 
 ![alt text](assets/readme/image-1.png)
 

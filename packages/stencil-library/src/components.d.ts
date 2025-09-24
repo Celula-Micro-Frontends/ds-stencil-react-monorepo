@@ -31,6 +31,9 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface TestComponent {
+        "text_button": string;
+    }
 }
 declare global {
     interface HTMLInputComponentElement extends Components.InputComponent, HTMLStencilElement {
@@ -45,9 +48,16 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLTestComponentElement extends Components.TestComponent, HTMLStencilElement {
+    }
+    var HTMLTestComponentElement: {
+        prototype: HTMLTestComponentElement;
+        new (): HTMLTestComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "input-component": HTMLInputComponentElement;
         "my-component": HTMLMyComponentElement;
+        "test-component": HTMLTestComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -76,9 +86,13 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface TestComponent {
+        "text_button"?: string;
+    }
     interface IntrinsicElements {
         "input-component": InputComponent;
         "my-component": MyComponent;
+        "test-component": TestComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -87,6 +101,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
         }
     }
 }

@@ -19,7 +19,7 @@
     "access": "public"
   },
   "dependencies": {
-    "stencil-library": "^0.0.1"
+    "stencil-library": "^0.0.2"
   },
   "peerDependencies": {
     "react": "^19.1.1",

@@ -17,6 +17,37 @@ export namespace Components {
         "type": string;
         "value": string;
     }
+    interface LoaderComponent {
+        /**
+          * @default '#3498db'
+         */
+        "color": string;
+        /**
+          * @default true
+         */
+        "showText": boolean;
+        /**
+          * @default 50
+         */
+        "size": number;
+        /**
+          * @default 1
+         */
+        "speed": number;
+        /**
+          * @default 'Cargando...'
+         */
+        "text": string;
+        "textColor": string;
+        /**
+          * @default 'ease-in-out'
+         */
+        "transition": string;
+        /**
+          * @default 'spinner'
+         */
+        "type": 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | 'ripple';
+    }
     interface MyComponent {
         /**
           * The first name
@@ -42,6 +73,12 @@ declare global {
         prototype: HTMLInputComponentElement;
         new (): HTMLInputComponentElement;
     };
+    interface HTMLLoaderComponentElement extends Components.LoaderComponent, HTMLStencilElement {
+    }
+    var HTMLLoaderComponentElement: {
+        prototype: HTMLLoaderComponentElement;
+        new (): HTMLLoaderComponentElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -56,6 +93,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "input-component": HTMLInputComponentElement;
+        "loader-component": HTMLLoaderComponentElement;
         "my-component": HTMLMyComponentElement;
         "test-component": HTMLTestComponentElement;
     }
@@ -71,6 +109,37 @@ declare namespace LocalJSX {
          */
         "type"?: string;
         "value"?: string;
+    }
+    interface LoaderComponent {
+        /**
+          * @default '#3498db'
+         */
+        "color"?: string;
+        /**
+          * @default true
+         */
+        "showText"?: boolean;
+        /**
+          * @default 50
+         */
+        "size"?: number;
+        /**
+          * @default 1
+         */
+        "speed"?: number;
+        /**
+          * @default 'Cargando...'
+         */
+        "text"?: string;
+        "textColor"?: string;
+        /**
+          * @default 'ease-in-out'
+         */
+        "transition"?: string;
+        /**
+          * @default 'spinner'
+         */
+        "type"?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | 'ripple';
     }
     interface MyComponent {
         /**
@@ -91,6 +160,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "input-component": InputComponent;
+        "loader-component": LoaderComponent;
         "my-component": MyComponent;
         "test-component": TestComponent;
     }
@@ -100,6 +170,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
+            "loader-component": LocalJSX.LoaderComponent & JSXBase.HTMLAttributes<HTMLLoaderComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
         }

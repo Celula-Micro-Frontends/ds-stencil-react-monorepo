@@ -10,9 +10,22 @@
 import type { StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
+import { AppCarousel as AppCarouselElement, defineCustomElement as defineAppCarousel } from "stencil-library/dist/components/app-carousel.js";
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
+import { NdText as NdTextElement, defineCustomElement as defineNdText } from "stencil-library/dist/components/nd-text.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
+
+export type AppCarouselEvents = NonNullable<unknown>;
+
+export const AppCarousel: StencilReactComponent<AppCarouselElement, AppCarouselEvents> = /*@__PURE__*/ createComponent<AppCarouselElement, AppCarouselEvents>({
+    tagName: 'app-carousel',
+    elementClass: AppCarouselElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as AppCarouselEvents,
+    defineCustomElement: defineAppCarousel
+});
 
 export type InputComponentEvents = NonNullable<unknown>;
 
@@ -34,6 +47,17 @@ export const MyComponent: StencilReactComponent<MyComponentElement, MyComponentE
     react: React,
     events: {} as MyComponentEvents,
     defineCustomElement: defineMyComponent
+});
+
+export type NdTextEvents = NonNullable<unknown>;
+
+export const NdText: StencilReactComponent<NdTextElement, NdTextEvents> = /*@__PURE__*/ createComponent<NdTextElement, NdTextEvents>({
+    tagName: 'nd-text',
+    elementClass: NdTextElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as NdTextEvents,
+    defineCustomElement: defineNdText
 });
 
 export type TestComponentEvents = NonNullable<unknown>;

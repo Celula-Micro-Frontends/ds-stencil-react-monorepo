@@ -9,6 +9,39 @@
     <script nomodule src="/build/stencil-library.js"></script>
   </head>
   <body>
-    <test-component text_button = "Guardar" />
+    <nd-text variant="h1">Título Principal</nd-text>
+    <nd-text variant="h2" weight="semibold" align="center">Subtítulo</nd-text>
+
+    <nd-text variant="p">Este es un párrafo normal</nd-text>
+    <nd-text variant="p" color="#666">Texto con color personalizado</nd-text>
+
+    <nd-text variant="label" htmlFor="email">Correo Electrónico</nd-text>
+
+    <nd-text variant="link" href="https://example.com">Ir al sitio</nd-text>
+    <nd-text variant="link" href="https://example.com" target="_blank">Abrir en nueva pestaña</nd-text>
+    <nd-text variant="link" disabled>Enlace deshabilitado</nd-text>
+
+    <nd-text variant="error">Este campo es obligatorio</nd-text>
+
+    <nd-text variant="p" truncate>Texto muy largo que será truncado...</nd-text>
+    <nd-text variant="p" maxLines="{3}">Texto limitado a 3 líneas máximo</nd-text>
+    <app-carousel
+      variant="mixed"
+      width="600px"
+      height="350px"
+      object-fit="cover"
+      images='["assets/images/image1.png", "assets/images/image2.png", "assets/images/image3.png"]'
+      texts='["Primera imagen", "Segunda", "Tercera"]'
+    ></app-carousel>
+
+    <app-carousel
+      variant="slider"
+      width="600px"
+      height="350px"
+      images='["assets/images/image1.png", "assets/images/image2.png", "assets/images/image3.png"]'
+    ></app-carousel>
+
+    <app-carousel variant="dots" imageSize="400px" objectFit="cover" images='["/assets/images/image1.png", "/assets/images/image2.png"]'></app-carousel>
+    <test-component text_button="Guardar" />
   </body>
 </html>

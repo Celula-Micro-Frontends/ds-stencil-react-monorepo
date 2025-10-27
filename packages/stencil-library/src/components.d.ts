@@ -15,7 +15,24 @@ export namespace Components {
           * @default 'text'
          */
         "type": string;
-        "value": string;
+    }
+    interface ModalComponent {
+        /**
+          * @default ''
+         */
+        "height": string;
+        /**
+          * @default false
+         */
+        "is_open": boolean;
+        /**
+          * @default ''
+         */
+        "title": string;
+        /**
+          * @default ''
+         */
+        "width": string;
     }
     interface MyComponent {
         /**
@@ -35,12 +52,48 @@ export namespace Components {
         "text_button": string;
     }
 }
+export interface InputComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInputComponentElement;
+}
+export interface ModalComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLModalComponentElement;
+}
 declare global {
+    interface HTMLInputComponentElementEventMap {
+        "inputTarget": { name: string; value: string };
+    }
     interface HTMLInputComponentElement extends Components.InputComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInputComponentElementEventMap>(type: K, listener: (this: HTMLInputComponentElement, ev: InputComponentCustomEvent<HTMLInputComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInputComponentElementEventMap>(type: K, listener: (this: HTMLInputComponentElement, ev: InputComponentCustomEvent<HTMLInputComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInputComponentElement: {
         prototype: HTMLInputComponentElement;
         new (): HTMLInputComponentElement;
+    };
+    interface HTMLModalComponentElementEventMap {
+        "modalClosed": void;
+    }
+    interface HTMLModalComponentElement extends Components.ModalComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLModalComponentElementEventMap>(type: K, listener: (this: HTMLModalComponentElement, ev: ModalComponentCustomEvent<HTMLModalComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLModalComponentElementEventMap>(type: K, listener: (this: HTMLModalComponentElement, ev: ModalComponentCustomEvent<HTMLModalComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLModalComponentElement: {
+        prototype: HTMLModalComponentElement;
+        new (): HTMLModalComponentElement;
     };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
@@ -56,6 +109,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "input-component": HTMLInputComponentElement;
+        "modal-component": HTMLModalComponentElement;
         "my-component": HTMLMyComponentElement;
         "test-component": HTMLTestComponentElement;
     }
@@ -64,13 +118,32 @@ declare namespace LocalJSX {
     interface InputComponent {
         "class"?: string;
         "name"?: string;
+        "onInputTarget"?: (event: InputComponentCustomEvent<{ name: string; value: string }>) => void;
         "text_error"?: string;
         "text_label"?: string;
         /**
           * @default 'text'
          */
         "type"?: string;
-        "value"?: string;
+    }
+    interface ModalComponent {
+        /**
+          * @default ''
+         */
+        "height"?: string;
+        /**
+          * @default false
+         */
+        "is_open"?: boolean;
+        "onModalClosed"?: (event: ModalComponentCustomEvent<void>) => void;
+        /**
+          * @default ''
+         */
+        "title"?: string;
+        /**
+          * @default ''
+         */
+        "width"?: string;
     }
     interface MyComponent {
         /**
@@ -91,6 +164,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "input-component": InputComponent;
+        "modal-component": ModalComponent;
         "my-component": MyComponent;
         "test-component": TestComponent;
     }
@@ -100,6 +174,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
+            "modal-component": LocalJSX.ModalComponent & JSXBase.HTMLAttributes<HTMLModalComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
         }

@@ -42,7 +42,7 @@ export class LoaderComponent {
   @Prop() opacityTo: number = 1; // Opacidad final
   @Prop() animationEasing: string = 'ease-in-out'; // Función de timing
   @Prop() animationDirection: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' = 'normal';
-  @Prop() animationIterations: number | 'infinite' = 'infinite';
+  @Prop() animationIterations: number | string | 'infinite' = 'infinite';
 
   private getSVGContent(): any {
     if (!this.svgPath) return null;

@@ -33,7 +33,7 @@ export namespace Components {
         /**
           * @default 'infinite'
          */
-        "animationIterations": number | 'infinite';
+        "animationIterations": number | string | 'infinite';
         /**
           * @default '#3498db'
          */
@@ -183,7 +183,7 @@ declare namespace LocalJSX {
         /**
           * @default 'infinite'
          */
-        "animationIterations"?: number | 'infinite';
+        "animationIterations"?: number | string | 'infinite';
         /**
           * @default '#3498db'
          */

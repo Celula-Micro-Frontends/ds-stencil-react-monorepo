@@ -39,6 +39,10 @@ export namespace Components {
          */
         "color": string;
         /**
+          * @default false
+         */
+        "debug": boolean;
+        /**
           * @default 1
          */
         "opacityFrom": number;
@@ -188,6 +192,10 @@ declare namespace LocalJSX {
           * @default '#3498db'
          */
         "color"?: string;
+        /**
+          * @default false
+         */
+        "debug"?: boolean;
         /**
           * @default 1
          */

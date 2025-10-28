@@ -21,6 +21,7 @@ export class LoaderComponent {
   @Prop() textColor: string;
 
   @Prop() showText: boolean = true;
+  @Prop() debug: boolean = false;
 
   // Nuevas propiedades para SVG
   @Prop() svgPath: string; // Ruta o contenido del SVG
@@ -197,18 +198,25 @@ export class LoaderComponent {
       '--animation-iterations': `${this.animationIterations}`,
     };
 
-    const contenStyle = {
+    const contenStyle = this.debug ? {
       border: '2px solid rgba(4, 98, 4, 0.623)',
       padding: '10px',
       margin: '10px',
       borderRadius: '1rem',
-
-    };
+    } : {};
 
     return (
       <div class="loader-wrapper" style={style}>
         <div style={contenStyle}>
-          <p>Loader Component Debug - Type: {this.type}</p>
+          {this.debug && (
+            <ul>
+              <li>Type: {this.type}</li>
+              <li>Animation: {this.svgAnimation}</li>
+              <li>Duration: {this.animationDuration}s</li>
+              <li>Size: {this.svgSize}px</li>
+              {this.svgPath && <li>SVG Path: {this.svgPath.substring(0, 50)}...</li>}
+            </ul>
+          )}
           <div class="loader-container">
             {this.getLoaderHTML()}
           </div>

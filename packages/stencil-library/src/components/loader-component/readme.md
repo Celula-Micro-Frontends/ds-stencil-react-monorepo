@@ -268,16 +268,32 @@ Un componente de carga versátil que soporta múltiples tipos de animaciones, in
 
 ## Properties
 
-| Property     | Attribute    | Description                      | Type                                                                                          | Default         |
-| ------------ | ------------ | -------------------------------- | --------------------------------------------------------------------------------------------- | --------------- |
-| `color`      | `color`      | Primary color of the loader      | `string`                                                                                      | `'#3498db'`     |
-| `showText`   | `show-text`  | Whether to show the loading text | `boolean`                                                                                     | `true`          |
-| `size`       | `size`       | Size of the loader in pixels     | `number`                                                                                      | `50`            |
-| `speed`      | `speed`      | Animation speed in seconds       | `number`                                                                                      | `1`             |
-| `text`       | `text`       | Loading text to display          | `string`                                                                                      | `'Cargando...'` |
-| `textColor`  | `text-color` | Color of the text                | `string`                                                                                      | `undefined`     |
-| `transition` | `transition` | CSS transition timing function   | `string`                                                                                      | `'ease-in-out'` |
-| `type`       | `type`       | Type of loader animation         | `"bars" \| "dots" \| "dual-ring" \| "ellipsis" \| "pulse" \| "ring" \| "ripple" \| "spinner"` | `'spinner'`     |
+| Property              | Attribute              | Description | Type                                                                                                   | Default         |
+| --------------------- | ---------------------- | ----------- | ------------------------------------------------------------------------------------------------------ | --------------- |
+| `animationDirection`  | `animation-direction`  |             | `"alternate" \| "alternate-reverse" \| "normal" \| "reverse"`                                          | `'normal'`      |
+| `animationDuration`   | `animation-duration`   |             | `number`                                                                                               | `2`             |
+| `animationEasing`     | `animation-easing`     |             | `string`                                                                                               | `'ease-in-out'` |
+| `animationIterations` | `animation-iterations` |             | `number \| string`                                                                                     | `'infinite'`    |
+| `color`               | `color`                |             | `string`                                                                                               | `'#3498db'`     |
+| `debug`               | `debug`                |             | `boolean`                                                                                              | `false`         |
+| `opacityFrom`         | `opacity-from`         |             | `number`                                                                                               | `1`             |
+| `opacityTo`           | `opacity-to`           |             | `number`                                                                                               | `1`             |
+| `rotateFrom`          | `rotate-from`          |             | `number`                                                                                               | `0`             |
+| `rotateTo`            | `rotate-to`            |             | `number`                                                                                               | `360`           |
+| `scaleFrom`           | `scale-from`           |             | `number`                                                                                               | `1`             |
+| `scaleTo`             | `scale-to`             |             | `number`                                                                                               | `1.2`           |
+| `showText`            | `show-text`            |             | `boolean`                                                                                              | `true`          |
+| `size`                | `size`                 |             | `number`                                                                                               | `50`            |
+| `speed`               | `speed`                |             | `number`                                                                                               | `1`             |
+| `svgAnimation`        | `svg-animation`        |             | `"bounce" \| "custom" \| "none" \| "pulse-scale" \| "rotate" \| "scale" \| "translate"`                | `'rotate'`      |
+| `svgPath`             | `svg-path`             |             | `string`                                                                                               | `undefined`     |
+| `svgSize`             | `svg-size`             |             | `number`                                                                                               | `50`            |
+| `text`                | `text`                 |             | `string`                                                                                               | `'Cargando...'` |
+| `textColor`           | `text-color`           |             | `string`                                                                                               | `undefined`     |
+| `transition`          | `transition`           |             | `string`                                                                                               | `'ease-in-out'` |
+| `translateX`          | `translate-x`          |             | `number`                                                                                               | `0`             |
+| `translateY`          | `translate-y`          |             | `number`                                                                                               | `0`             |
+| `type`                | `type`                 |             | `"bars" \| "dots" \| "dual-ring" \| "ellipsis" \| "pulse" \| "ring" \| "ripple" \| "spinner" \| "svg"` | `'spinner'`     |
 
 
 ----------------------------------------------

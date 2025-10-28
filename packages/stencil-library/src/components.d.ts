@@ -19,9 +19,49 @@ export namespace Components {
     }
     interface LoaderComponent {
         /**
+          * @default 'normal'
+         */
+        "animationDirection": 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+        /**
+          * @default 2
+         */
+        "animationDuration": number;
+        /**
+          * @default 'ease-in-out'
+         */
+        "animationEasing": string;
+        /**
+          * @default 'infinite'
+         */
+        "animationIterations": number | 'infinite';
+        /**
           * @default '#3498db'
          */
         "color": string;
+        /**
+          * @default 1
+         */
+        "opacityFrom": number;
+        /**
+          * @default 1
+         */
+        "opacityTo": number;
+        /**
+          * @default 0
+         */
+        "rotateFrom": number;
+        /**
+          * @default 360
+         */
+        "rotateTo": number;
+        /**
+          * @default 1
+         */
+        "scaleFrom": number;
+        /**
+          * @default 1.2
+         */
+        "scaleTo": number;
         /**
           * @default true
          */
@@ -35,6 +75,15 @@ export namespace Components {
          */
         "speed": number;
         /**
+          * @default 'rotate'
+         */
+        "svgAnimation": 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
+        "svgPath": string;
+        /**
+          * @default 50
+         */
+        "svgSize": number;
+        /**
           * @default 'Cargando...'
          */
         "text": string;
@@ -44,9 +93,17 @@ export namespace Components {
          */
         "transition": string;
         /**
+          * @default 0
+         */
+        "translateX": number;
+        /**
+          * @default 0
+         */
+        "translateY": number;
+        /**
           * @default 'spinner'
          */
-        "type": 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | 'ripple';
+        "type": 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | 'ripple' | 'svg';
     }
     interface MyComponent {
         /**
@@ -112,9 +169,49 @@ declare namespace LocalJSX {
     }
     interface LoaderComponent {
         /**
+          * @default 'normal'
+         */
+        "animationDirection"?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+        /**
+          * @default 2
+         */
+        "animationDuration"?: number;
+        /**
+          * @default 'ease-in-out'
+         */
+        "animationEasing"?: string;
+        /**
+          * @default 'infinite'
+         */
+        "animationIterations"?: number | 'infinite';
+        /**
           * @default '#3498db'
          */
         "color"?: string;
+        /**
+          * @default 1
+         */
+        "opacityFrom"?: number;
+        /**
+          * @default 1
+         */
+        "opacityTo"?: number;
+        /**
+          * @default 0
+         */
+        "rotateFrom"?: number;
+        /**
+          * @default 360
+         */
+        "rotateTo"?: number;
+        /**
+          * @default 1
+         */
+        "scaleFrom"?: number;
+        /**
+          * @default 1.2
+         */
+        "scaleTo"?: number;
         /**
           * @default true
          */
@@ -128,6 +225,15 @@ declare namespace LocalJSX {
          */
         "speed"?: number;
         /**
+          * @default 'rotate'
+         */
+        "svgAnimation"?: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
+        "svgPath"?: string;
+        /**
+          * @default 50
+         */
+        "svgSize"?: number;
+        /**
           * @default 'Cargando...'
          */
         "text"?: string;
@@ -137,9 +243,17 @@ declare namespace LocalJSX {
          */
         "transition"?: string;
         /**
+          * @default 0
+         */
+        "translateX"?: number;
+        /**
+          * @default 0
+         */
+        "translateY"?: number;
+        /**
           * @default 'spinner'
          */
-        "type"?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | 'ripple';
+        "type"?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | 'ripple' | 'svg';
     }
     interface MyComponent {
         /**

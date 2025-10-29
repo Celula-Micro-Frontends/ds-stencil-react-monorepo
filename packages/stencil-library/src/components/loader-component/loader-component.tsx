@@ -47,7 +47,23 @@ export class LoaderComponent {
 
 
   private getSVGContent(): any {
-    if (!this.svgPath) return null;
+    if (!this.svgPath) {
+      // Mostrar un SVG predeterminado si no se pasa un svgPath
+      return (
+        <svg
+          class="svg-loader"
+          width={this.svgSize}
+          height={this.svgSize}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={this.color}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="12" cy="12" r="10" stroke-width="2" />
+          <path d="M12 6v6l4 2" stroke-width="2" />
+        </svg>
+      );
+    }
 
     // Si es una URL o ruta
     if (this.svgPath.startsWith('http') || this.svgPath.endsWith('.svg')) {

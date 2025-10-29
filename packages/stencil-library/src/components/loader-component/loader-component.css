@@ -18,6 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: var(--svg-size);
 }
 
 .loader-text {
@@ -426,7 +427,8 @@
 }
 
 .custom-loader-container svg {
-  width: 14rem;
+  width: var(--svg-size, 50px);
+  height: var(--svg-size, 50px);
   margin: 5vw;
 }
 
@@ -441,8 +443,8 @@
 
 .logo-lab {
 
-  width: 4rem;
-  margin: 8px;
+  width: var(--svg-size, 50px);
+  margin: var(--svg-size, 50px)
 }
 
 #Vector_5 {
@@ -550,5 +552,4 @@
   align-items: center;
   justify-content: center;
   gap: calc(var(--size, 50px) * 0.1);
-  /* Reduce gap further */
 }

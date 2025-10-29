@@ -28,6 +28,10 @@ Un componente de carga versátil que soporta múltiples tipos de animaciones, in
 <!-- Pulse con tamaño personalizado -->
 <loader-component type="pulse" size="80" color="#2ecc71"></loader-component>
 ```
+<!-- svg por defecto -->
+ <loader-component type="svg">
+      </loader-component>
+
 
 ## 🚀 Animaciones SVG Avanzadas
 
@@ -285,7 +289,7 @@ Un componente de carga versátil que soporta múltiples tipos de animaciones, in
 | `showText`            | `show-text`            |             | `boolean`                                                                                              | `true`          |
 | `size`                | `size`                 |             | `number`                                                                                               | `50`            |
 | `speed`               | `speed`                |             | `number`                                                                                               | `1`             |
-| `svgAnimation`        | `svg-animation`        |             | `"bounce" \| "custom" \| "none" \| "pulse-scale" \| "rotate" \| "scale" \| "translate"`                | `'rotate'`      |
+| `svgAnimation`        | `svg-animation`        |             | `"bounce" \| "bubbles" \| "custom" \| "none" \| "pulse-scale" \| "rotate" \| "scale" \| "translate"`   | `'rotate'`      |
 | `svgPath`             | `svg-path`             |             | `string`                                                                                               | `undefined`     |
 | `svgSize`             | `svg-size`             |             | `number`                                                                                               | `50`            |
 | `text`                | `text`                 |             | `string`                                                                                               | `'Cargando...'` |

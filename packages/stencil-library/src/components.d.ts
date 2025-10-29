@@ -81,7 +81,7 @@ export namespace Components {
         /**
           * @default 'rotate'
          */
-        "svgAnimation": 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
+        "svgAnimation": 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | "bubbles" | 'none';
         "svgPath": string;
         /**
           * @default 50
@@ -235,7 +235,7 @@ declare namespace LocalJSX {
         /**
           * @default 'rotate'
          */
-        "svgAnimation"?: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
+        "svgAnimation"?: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | "bubbles" | 'none';
         "svgPath"?: string;
         /**
           * @default 50

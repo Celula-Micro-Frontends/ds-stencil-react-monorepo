@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
+export { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
 export namespace Components {
     interface InputComponent {
         "class": string;
@@ -34,6 +36,13 @@ export namespace Components {
     interface TestComponent {
         "text_button": string;
     }
+    interface TooltipComponent {
+        /**
+          * @default TOOLTIP_ALIGNMENT.TOP
+         */
+        "alignment": TooltipAlignment;
+        "text": string;
+    }
 }
 declare global {
     interface HTMLInputComponentElement extends Components.InputComponent, HTMLStencilElement {
@@ -54,10 +63,17 @@ declare global {
         prototype: HTMLTestComponentElement;
         new (): HTMLTestComponentElement;
     };
+    interface HTMLTooltipComponentElement extends Components.TooltipComponent, HTMLStencilElement {
+    }
+    var HTMLTooltipComponentElement: {
+        prototype: HTMLTooltipComponentElement;
+        new (): HTMLTooltipComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "input-component": HTMLInputComponentElement;
         "my-component": HTMLMyComponentElement;
         "test-component": HTMLTestComponentElement;
+        "tooltip-component": HTMLTooltipComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -89,10 +105,18 @@ declare namespace LocalJSX {
     interface TestComponent {
         "text_button"?: string;
     }
+    interface TooltipComponent {
+        /**
+          * @default TOOLTIP_ALIGNMENT.TOP
+         */
+        "alignment"?: TooltipAlignment;
+        "text"?: string;
+    }
     interface IntrinsicElements {
         "input-component": InputComponent;
         "my-component": MyComponent;
         "test-component": TestComponent;
+        "tooltip-component": TooltipComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -102,6 +126,7 @@ declare module "@stencil/core" {
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
+            "tooltip-component": LocalJSX.TooltipComponent & JSXBase.HTMLAttributes<HTMLTooltipComponentElement>;
         }
     }
 }

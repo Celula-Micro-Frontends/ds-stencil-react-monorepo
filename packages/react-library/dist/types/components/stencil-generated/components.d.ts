@@ -2,9 +2,12 @@ import type { StencilReactComponent } from '@stencil/react-output-target/runtime
 import { InputComponent as InputComponentElement } from "stencil-library/dist/components/input-component.js";
 import { MyComponent as MyComponentElement } from "stencil-library/dist/components/my-component.js";
 import { TestComponent as TestComponentElement } from "stencil-library/dist/components/test-component.js";
+import { TooltipComponent as TooltipComponentElement } from "stencil-library/dist/components/tooltip-component.js";
 export type InputComponentEvents = NonNullable<unknown>;
 export declare const InputComponent: StencilReactComponent<InputComponentElement, InputComponentEvents>;
 export type MyComponentEvents = NonNullable<unknown>;
 export declare const MyComponent: StencilReactComponent<MyComponentElement, MyComponentEvents>;
 export type TestComponentEvents = NonNullable<unknown>;
 export declare const TestComponent: StencilReactComponent<TestComponentElement, TestComponentEvents>;
+export type TooltipComponentEvents = NonNullable<unknown>;
+export declare const TooltipComponent: StencilReactComponent<TooltipComponentElement, TooltipComponentEvents>;

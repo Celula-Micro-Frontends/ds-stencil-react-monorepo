@@ -21,6 +21,10 @@
   height: var(--svg-size);
 }
 
+.bubbles-text {
+  animation: changeTextColor 4s ease-in-out infinite;
+}
+
 .loader-text {
   margin-top: 0;
   color: var(--text-color, var(--color, #3498db));
@@ -432,15 +436,15 @@
   margin: 5vw;
 }
 
-:root {
+/* :root {
   --color-1: #0FC2C0;
   --color-2: #0CABA8;
   --color-3: #008F8D;
   --color-4: #015A58;
   --color-5: #023535;
-  --color-6: #008F8D;
 }
 
+*/
 .logo-lab {
 
   width: var(--svg-size, 50px);
@@ -521,9 +525,6 @@
     fill: var(--color-5);
   }
 
-  100% {
-    fill: var(--color-6);
-  }
 }
 
 .bubbles {
@@ -532,9 +533,7 @@
   align-items: center;
   position: relative;
   width: auto;
-  /* Adjust width to fit content */
   height: auto;
-  /* Adjust height to fit content */
 }
 
 .bubbles .bubble {
@@ -552,4 +551,29 @@
   align-items: center;
   justify-content: center;
   gap: calc(var(--size, 50px) * 0.1);
+}
+
+@keyframes changeTextColor {
+
+  0%,
+  100% {
+    color: var(--color-1);
+  }
+
+  20% {
+    color: var(--color-2);
+  }
+
+  40% {
+    color: var(--color-3);
+  }
+
+  60% {
+    color: var(--color-4);
+  }
+
+  80% {
+    color: var(--color-5);
+  }
+
 }

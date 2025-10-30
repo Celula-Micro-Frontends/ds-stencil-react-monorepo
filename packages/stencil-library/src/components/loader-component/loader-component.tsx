@@ -6,7 +6,7 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class LoaderComponent {
-  @Prop() type: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | 'ripple' | 'svg' = 'spinner';
+  @Prop() type: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg' = 'spinner';
 
   @Prop() color: string = '#3498db';
 
@@ -23,14 +23,24 @@ export class LoaderComponent {
   @Prop() showText: boolean = true;
   @Prop() debug: boolean = false;
 
-  // Nuevas propiedades para SVG
-  @Prop() svgPath: string; // Ruta o contenido del SVG
+  @Prop() svgPath: string;
 
-  @Prop() svgAnimation: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | "bubbles" | 'none' = 'rotate';
+  @Prop() svgAnimation: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none' = 'rotate';
 
   @Prop() animationDuration: number = 2;
 
   @Prop() svgSize: number = 50;
+  // colores svg
+  @Prop() color1: string = '#0FC2C0';
+  @Prop() color2: string = '#0CABA8';
+  @Prop() color3: string = '#008F8D';
+  @Prop() color4: string = '#015A58';
+  @Prop() color5: string = '#21daabff';
+
+
+
+
+
 
   // Propiedades para animaciones personalizadas
   @Prop() scaleFrom: number = 1; // Escala inicial
@@ -42,8 +52,8 @@ export class LoaderComponent {
   @Prop() opacityFrom: number = 1; // Opacidad inicial
   @Prop() opacityTo: number = 1; // Opacidad final
   @Prop() animationEasing: string = 'ease-in-out'; // Función de timing
-  @Prop() animationDirection: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' = 'normal';
-  @Prop() animationIterations: number | string | 'infinite' = 'infinite';
+  @Prop() animationDirection: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse' = 'normal'; // Dirección de la animación
+  @Prop() animationIterations: number | string | 'infinite' = 'infinite';//
 
 
   private getSVGContent(): any {
@@ -255,11 +265,11 @@ export class LoaderComponent {
       '--animation-duration': `${this.animationDuration}s`,
       '--svg-size': `${this.svgSize}px`,
       // Variables de color para las animaciones de burbujas
-      '--color-1': this.color || '#0FC2C0',
-      '--color-2': '#0CABA8',
-      '--color-3': '#008F8D',
-      '--color-4': '#015A58',
-      '--color-5': '#023535',
+      '--color-1': this.color1,
+      '--color-2': this.color2,
+      '--color-3': this.color3,
+      '--color-4': this.color4,
+      '--color-5': this.color5,
       // Variables para animaciones personalizadas
       '--scale-from': `${this.scaleFrom}`,
       '--scale-to': `${this.scaleTo}`,
@@ -296,7 +306,11 @@ export class LoaderComponent {
           <div class="loader-container">
             {this.getLoaderHTML()}
           </div>
-          {this.showText && <div class="loader-text">{this.text}</div>}
+          {this.showText && (
+            <div class={`loader-text ${this.type === 'bubbles' ? 'bubbles-text' : ''}`}>
+              {this.text}
+            </div>
+          )}
         </div>
       </div>
     );

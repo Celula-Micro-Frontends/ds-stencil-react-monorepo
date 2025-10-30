@@ -39,6 +39,26 @@ export namespace Components {
          */
         "color": string;
         /**
+          * @default '#0FC2C0'
+         */
+        "color1": string;
+        /**
+          * @default '#0CABA8'
+         */
+        "color2": string;
+        /**
+          * @default '#008F8D'
+         */
+        "color3": string;
+        /**
+          * @default '#015A58'
+         */
+        "color4": string;
+        /**
+          * @default '#21daabff'
+         */
+        "color5": string;
+        /**
           * @default false
          */
         "debug": boolean;
@@ -81,7 +101,7 @@ export namespace Components {
         /**
           * @default 'rotate'
          */
-        "svgAnimation": 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | "bubbles" | 'none';
+        "svgAnimation": 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
         "svgPath": string;
         /**
           * @default 50
@@ -107,7 +127,7 @@ export namespace Components {
         /**
           * @default 'spinner'
          */
-        "type": 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | 'ripple' | 'svg';
+        "type": 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg';
     }
     interface MyComponent {
         /**
@@ -193,6 +213,26 @@ declare namespace LocalJSX {
          */
         "color"?: string;
         /**
+          * @default '#0FC2C0'
+         */
+        "color1"?: string;
+        /**
+          * @default '#0CABA8'
+         */
+        "color2"?: string;
+        /**
+          * @default '#008F8D'
+         */
+        "color3"?: string;
+        /**
+          * @default '#015A58'
+         */
+        "color4"?: string;
+        /**
+          * @default '#21daabff'
+         */
+        "color5"?: string;
+        /**
           * @default false
          */
         "debug"?: boolean;
@@ -235,7 +275,7 @@ declare namespace LocalJSX {
         /**
           * @default 'rotate'
          */
-        "svgAnimation"?: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | "bubbles" | 'none';
+        "svgAnimation"?: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
         "svgPath"?: string;
         /**
           * @default 50
@@ -261,7 +301,7 @@ declare namespace LocalJSX {
         /**
           * @default 'spinner'
          */
-        "type"?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | 'ripple' | 'svg';
+        "type"?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg';
     }
     interface MyComponent {
         /**

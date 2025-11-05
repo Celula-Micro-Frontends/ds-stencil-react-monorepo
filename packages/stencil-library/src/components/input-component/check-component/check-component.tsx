@@ -1,31 +1,29 @@
 import { Component, Event, EventEmitter, Prop, h } from '@stencil/core';
 
 @Component({
-  tag: 'input-component',
-  styleUrl: 'input-component.css',
+  tag: 'check-component',
+  styleUrl: 'check-component.css',
   shadow: true,
 })
-export class InputComponent {
+export class CheckComponent {
   @Event() inputTarget: EventEmitter<{ name: string; value: string }>;
   @Prop() class: string;
   @Prop() name: string;
-  @Prop() type: string = 'text';
+  @Prop() type: string = 'check';
   @Prop() text_label: string;
   @Prop() text_error: string;
-
-  value = '';
+  @Prop() value: string;
 
   private onInputChange(event) {
-    this.value = event.data;
     this.inputTarget.emit({ name: this.name, value: event.target.value });
   }
-  
+
   render() {
     return (
-      <div class={`container-input-component ${this.class}`}>
-        {this.text_label && <label class="label">{this.text_label}</label>}
-        <div class="container-input">
-          <input type={this.type} class={this.type !== "date" ? "input" : "input-date"} name={this.name} onInput={event => this.onInputChange(event)} value={this.value} />
+      <div class={`container-check-component ${this.class}`}>
+        <div class={`container-check`}>
+          <input class="check-component" type="checkbox" value={this.value} name={this.name} onInput={event => this.onInputChange(event)} />
+          {this.text_label && <label class="label">{this.text_label}</label>}
         </div>
         {this.text_error && <label class="label-error">* {this.text_error}</label>}
       </div>

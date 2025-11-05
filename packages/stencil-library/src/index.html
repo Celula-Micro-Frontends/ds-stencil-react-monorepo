@@ -9,11 +9,27 @@
     <script nomodule src="/build/stencil-library.js"></script>
   </head>
   <body>
-    <!-- <input-component id_input="inputName" text_label="Nombre"></input-component> -->
-     <modal-component is_open title="Hola">
+    <!-- <select-component text_label="Nombre" value="hola" text_error="prueba"></select-component> -->
+    <input-component text_label="Nombre" type ="date" text_error="prueba"></input-component>
+    <!-- <check-component text_label="Nombre" value="hola" text_error="prueba"></check-component> -->
+    <!-- <modal-component is_open title="Hola">
       <div>
         <p>Prueba</p>
       </div>
-     </modal-component>
+     </modal-component> -->
   </body>
+
+  <script>
+    // const selectComponent = document.querySelector('select-component');
+    // selectComponent.data = [
+    //   {
+    //     value: '1',
+    //     text: 'Perro',
+    //   },
+    //   {
+    //     value: '2',
+    //     text: 'Gato',
+    //   },
+    // ];
+  </script>
 </html>

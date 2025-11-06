@@ -6,6 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CardComponent {
+        "cardTitle": string;
+        "description": string;
+        "link": string;
+    }
     interface InputComponent {
         "class": string;
         "name": string;
@@ -34,8 +39,16 @@ export namespace Components {
     interface TestComponent {
         "text_button": string;
     }
+    interface ToastComponent {
+    }
 }
 declare global {
+    interface HTMLCardComponentElement extends Components.CardComponent, HTMLStencilElement {
+    }
+    var HTMLCardComponentElement: {
+        prototype: HTMLCardComponentElement;
+        new (): HTMLCardComponentElement;
+    };
     interface HTMLInputComponentElement extends Components.InputComponent, HTMLStencilElement {
     }
     var HTMLInputComponentElement: {
@@ -54,13 +67,26 @@ declare global {
         prototype: HTMLTestComponentElement;
         new (): HTMLTestComponentElement;
     };
+    interface HTMLToastComponentElement extends Components.ToastComponent, HTMLStencilElement {
+    }
+    var HTMLToastComponentElement: {
+        prototype: HTMLToastComponentElement;
+        new (): HTMLToastComponentElement;
+    };
     interface HTMLElementTagNameMap {
+        "card-component": HTMLCardComponentElement;
         "input-component": HTMLInputComponentElement;
         "my-component": HTMLMyComponentElement;
         "test-component": HTMLTestComponentElement;
+        "toast-component": HTMLToastComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CardComponent {
+        "cardTitle"?: string;
+        "description"?: string;
+        "link"?: string;
+    }
     interface InputComponent {
         "class"?: string;
         "name"?: string;
@@ -89,19 +115,25 @@ declare namespace LocalJSX {
     interface TestComponent {
         "text_button"?: string;
     }
+    interface ToastComponent {
+    }
     interface IntrinsicElements {
+        "card-component": CardComponent;
         "input-component": InputComponent;
         "my-component": MyComponent;
         "test-component": TestComponent;
+        "toast-component": ToastComponent;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "card-component": LocalJSX.CardComponent & JSXBase.HTMLAttributes<HTMLCardComponentElement>;
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
+            "toast-component": LocalJSX.ToastComponent & JSXBase.HTMLAttributes<HTMLToastComponentElement>;
         }
     }
 }

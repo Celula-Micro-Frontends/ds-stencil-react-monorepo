@@ -14,7 +14,13 @@
 | `text_error` | `text_error` |             | `string` | `undefined` |
 | `text_label` | `text_label` |             | `string` | `undefined` |
 | `type`       | `type`       |             | `string` | `'text'`    |
-| `value`      | `value`      |             | `string` | `undefined` |
+
+
+## Events
+
+| Event         | Description | Type                                            |
+| ------------- | ----------- | ----------------------------------------------- |
+| `inputTarget` |             | `CustomEvent<{ name: string; value: string; }>` |
 
 
 ----------------------------------------------

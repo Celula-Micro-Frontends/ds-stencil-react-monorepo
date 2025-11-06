@@ -7,23 +7,48 @@
 
 /* eslint-disable */
 
-import type { StencilReactComponent } from '@stencil/react-output-target/runtime';
+import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
+import { CheckComponent as CheckComponentElement, defineCustomElement as defineCheckComponent } from "stencil-library/dist/components/check-component.js";
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
+import { ModalComponent as ModalComponentElement, defineCustomElement as defineModalComponent } from "stencil-library/dist/components/modal-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
+import { SelectComponent as SelectComponentElement, defineCustomElement as defineSelectComponent } from "stencil-library/dist/components/select-component.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
 import { TooltipComponent as TooltipComponentElement, defineCustomElement as defineTooltipComponent } from "stencil-library/dist/components/tooltip-component.js";
 
-export type InputComponentEvents = NonNullable<unknown>;
+export type CheckComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
+
+export const CheckComponent: StencilReactComponent<CheckComponentElement, CheckComponentEvents> = /*@__PURE__*/ createComponent<CheckComponentElement, CheckComponentEvents>({
+    tagName: 'check-component',
+    elementClass: CheckComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onInputTarget: 'inputTarget' } as CheckComponentEvents,
+    defineCustomElement: defineCheckComponent
+});
+
+export type InputComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
 
 export const InputComponent: StencilReactComponent<InputComponentElement, InputComponentEvents> = /*@__PURE__*/ createComponent<InputComponentElement, InputComponentEvents>({
     tagName: 'input-component',
     elementClass: InputComponentElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {} as InputComponentEvents,
+    events: { onInputTarget: 'inputTarget' } as InputComponentEvents,
     defineCustomElement: defineInputComponent
+});
+
+export type ModalComponentEvents = { onModalClosed: EventName<CustomEvent<void>> };
+
+export const ModalComponent: StencilReactComponent<ModalComponentElement, ModalComponentEvents> = /*@__PURE__*/ createComponent<ModalComponentElement, ModalComponentEvents>({
+    tagName: 'modal-component',
+    elementClass: ModalComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onModalClosed: 'modalClosed' } as ModalComponentEvents,
+    defineCustomElement: defineModalComponent
 });
 
 export type MyComponentEvents = NonNullable<unknown>;
@@ -35,6 +60,17 @@ export const MyComponent: StencilReactComponent<MyComponentElement, MyComponentE
     react: React,
     events: {} as MyComponentEvents,
     defineCustomElement: defineMyComponent
+});
+
+export type SelectComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
+
+export const SelectComponent: StencilReactComponent<SelectComponentElement, SelectComponentEvents> = /*@__PURE__*/ createComponent<SelectComponentElement, SelectComponentEvents>({
+    tagName: 'select-component',
+    elementClass: SelectComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onInputTarget: 'inputTarget' } as SelectComponentEvents,
+    defineCustomElement: defineSelectComponent
 });
 
 export type TestComponentEvents = NonNullable<unknown>;

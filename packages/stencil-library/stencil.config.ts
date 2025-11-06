@@ -1,8 +1,10 @@
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
+import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'stencil-library',
+  
   globalStyle: 'src/styles/styles.scss',
   outputTargets: [
     reactOutputTarget({
@@ -25,6 +27,7 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
   ],
+  plugins: [sass({})],
   testing: {
     browserHeadless: 'shell',
   },

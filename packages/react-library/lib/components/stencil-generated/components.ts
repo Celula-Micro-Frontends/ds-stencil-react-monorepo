@@ -7,12 +7,28 @@
 
 /* eslint-disable */
 
-import type { StencilReactComponent } from '@stencil/react-output-target/runtime';
+import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
+import { ButtonComponent as ButtonComponentElement, defineCustomElement as defineButtonComponent } from "stencil-library/dist/components/button-component.js";
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
+
+export type ButtonComponentEvents = {
+    onButtonClick: EventName<CustomEvent<{
+        id: string;
+    }>>
+};
+
+export const ButtonComponent: StencilReactComponent<ButtonComponentElement, ButtonComponentEvents> = /*@__PURE__*/ createComponent<ButtonComponentElement, ButtonComponentEvents>({
+    tagName: 'button-component',
+    elementClass: ButtonComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onButtonClick: 'buttonClick' } as ButtonComponentEvents,
+    defineCustomElement: defineButtonComponent
+});
 
 export type InputComponentEvents = NonNullable<unknown>;
 

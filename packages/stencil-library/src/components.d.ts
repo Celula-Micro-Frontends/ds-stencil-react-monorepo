@@ -5,7 +5,66 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { SizeButton, TypeButton, VariantButton, WidthMode } from "./components/button-component/button-interfaces";
+export { SizeButton, TypeButton, VariantButton, WidthMode } from "./components/button-component/button-interfaces";
 export namespace Components {
+    interface ButtonComponent {
+        /**
+          * The disabled state of the button.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+         */
+        "heading": string;
+        /**
+          * The html index of the button.
+          * @default 0
+         */
+        "htmlIndex": number;
+        /**
+          * The id of the button.
+         */
+        "idButton": string;
+        /**
+          * Show loading state in the button.
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * The name of the button.
+         */
+        "name"?: string;
+        /**
+          * The prefix icon of the button.
+         */
+        "prefixIcon"?: string;
+        /**
+          * The size of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default SIZE_BUTTON.REGULAR
+         */
+        "size": SizeButton;
+        /**
+          * The suffix icon of the button.
+         */
+        "suffixIcon"?: string;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+          * @default TYPE_BUTTON.SUBMIT
+         */
+        "type": TypeButton;
+        /**
+          * The variant of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default VARIANT_BUTTON.PRIMARY
+         */
+        "variant": VariantButton;
+        /**
+          * The mode width button default | full.
+          * @default WIDTH_MODE.DEFAULT
+         */
+        "widthMode"?: WidthMode;
+    }
     interface InputComponent {
         "class": string;
         "name": string;
@@ -35,7 +94,30 @@ export namespace Components {
         "text_button": string;
     }
 }
+export interface ButtonComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLButtonComponentElement;
+}
 declare global {
+    interface HTMLButtonComponentElementEventMap {
+        "buttonClick": {
+    id: string;
+  };
+    }
+    interface HTMLButtonComponentElement extends Components.ButtonComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLButtonComponentElementEventMap>(type: K, listener: (this: HTMLButtonComponentElement, ev: ButtonComponentCustomEvent<HTMLButtonComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLButtonComponentElementEventMap>(type: K, listener: (this: HTMLButtonComponentElement, ev: ButtonComponentCustomEvent<HTMLButtonComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLButtonComponentElement: {
+        prototype: HTMLButtonComponentElement;
+        new (): HTMLButtonComponentElement;
+    };
     interface HTMLInputComponentElement extends Components.InputComponent, HTMLStencilElement {
     }
     var HTMLInputComponentElement: {
@@ -55,12 +137,76 @@ declare global {
         new (): HTMLTestComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "button-component": HTMLButtonComponentElement;
         "input-component": HTMLInputComponentElement;
         "my-component": HTMLMyComponentElement;
         "test-component": HTMLTestComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface ButtonComponent {
+        /**
+          * The disabled state of the button.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+         */
+        "heading"?: string;
+        /**
+          * The html index of the button.
+          * @default 0
+         */
+        "htmlIndex"?: number;
+        /**
+          * The id of the button.
+         */
+        "idButton": string;
+        /**
+          * Show loading state in the button.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * The name of the button.
+         */
+        "name"?: string;
+        /**
+          * The event emitted when the button is clicked.
+         */
+        "onButtonClick"?: (event: ButtonComponentCustomEvent<{
+    id: string;
+  }>) => void;
+        /**
+          * The prefix icon of the button.
+         */
+        "prefixIcon"?: string;
+        /**
+          * The size of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default SIZE_BUTTON.REGULAR
+         */
+        "size"?: SizeButton;
+        /**
+          * The suffix icon of the button.
+         */
+        "suffixIcon"?: string;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+          * @default TYPE_BUTTON.SUBMIT
+         */
+        "type"?: TypeButton;
+        /**
+          * The variant of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default VARIANT_BUTTON.PRIMARY
+         */
+        "variant"?: VariantButton;
+        /**
+          * The mode width button default | full.
+          * @default WIDTH_MODE.DEFAULT
+         */
+        "widthMode"?: WidthMode;
+    }
     interface InputComponent {
         "class"?: string;
         "name"?: string;
@@ -90,6 +236,7 @@ declare namespace LocalJSX {
         "text_button"?: string;
     }
     interface IntrinsicElements {
+        "button-component": ButtonComponent;
         "input-component": InputComponent;
         "my-component": MyComponent;
         "test-component": TestComponent;
@@ -99,6 +246,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "button-component": LocalJSX.ButtonComponent & JSXBase.HTMLAttributes<HTMLButtonComponentElement>;
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;

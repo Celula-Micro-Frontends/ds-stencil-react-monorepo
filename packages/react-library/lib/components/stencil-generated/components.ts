@@ -16,6 +16,7 @@ import { ModalComponent as ModalComponentElement, defineCustomElement as defineM
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
 import { SelectComponent as SelectComponentElement, defineCustomElement as defineSelectComponent } from "stencil-library/dist/components/select-component.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
+import { TooltipComponent as TooltipComponentElement, defineCustomElement as defineTooltipComponent } from "stencil-library/dist/components/tooltip-component.js";
 
 export type CheckComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
 
@@ -81,4 +82,15 @@ export const TestComponent: StencilReactComponent<TestComponentElement, TestComp
     react: React,
     events: {} as TestComponentEvents,
     defineCustomElement: defineTestComponent
+});
+
+export type TooltipComponentEvents = NonNullable<unknown>;
+
+export const TooltipComponent: StencilReactComponent<TooltipComponentElement, TooltipComponentEvents> = /*@__PURE__*/ createComponent<TooltipComponentElement, TooltipComponentEvents>({
+    tagName: 'tooltip-component',
+    elementClass: TooltipComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as TooltipComponentEvents,
+    defineCustomElement: defineTooltipComponent
 });

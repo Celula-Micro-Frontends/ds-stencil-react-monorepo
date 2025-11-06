@@ -7,11 +7,12 @@
 
 /* eslint-disable */
 
-import type { StencilReactComponent } from '@stencil/react-output-target/runtime';
+import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 import { AppCarousel as AppCarouselElement, defineCustomElement as defineAppCarousel } from "stencil-library/dist/components/app-carousel.js";
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
+import { ModalComponent as ModalComponentElement, defineCustomElement as defineModalComponent } from "stencil-library/dist/components/modal-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
 import { NdText as NdTextElement, defineCustomElement as defineNdText } from "stencil-library/dist/components/nd-text.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
@@ -34,8 +35,19 @@ export const InputComponent: StencilReactComponent<InputComponentElement, InputC
     elementClass: InputComponentElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: {} as InputComponentEvents,
+    events: { onInputTarget: 'inputTarget' } as InputComponentEvents,
     defineCustomElement: defineInputComponent
+});
+
+export type ModalComponentEvents = { onModalClosed: EventName<CustomEvent<void>> };
+
+export const ModalComponent: StencilReactComponent<ModalComponentElement, ModalComponentEvents> = /*@__PURE__*/ createComponent<ModalComponentElement, ModalComponentEvents>({
+    tagName: 'modal-component',
+    elementClass: ModalComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onModalClosed: 'modalClosed' } as ModalComponentEvents,
+    defineCustomElement: defineModalComponent
 });
 
 export type MyComponentEvents = NonNullable<unknown>;
@@ -69,4 +81,15 @@ export const TestComponent: StencilReactComponent<TestComponentElement, TestComp
     react: React,
     events: {} as TestComponentEvents,
     defineCustomElement: defineTestComponent
+});
+
+export type TooltipComponentEvents = NonNullable<unknown>;
+
+export const TooltipComponent: StencilReactComponent<TooltipComponentElement, TooltipComponentEvents> = /*@__PURE__*/ createComponent<TooltipComponentElement, TooltipComponentEvents>({
+    tagName: 'tooltip-component',
+    elementClass: TooltipComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as TooltipComponentEvents,
+    defineCustomElement: defineTooltipComponent
 });

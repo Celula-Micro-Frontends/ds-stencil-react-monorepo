@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
+export { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
 export namespace Components {
     interface AppCarousel {
         /**
@@ -45,7 +47,24 @@ export namespace Components {
           * @default 'text'
          */
         "type": string;
-        "value": string;
+    }
+    interface ModalComponent {
+        /**
+          * @default ''
+         */
+        "height": string;
+        /**
+          * @default false
+         */
+        "is_open": boolean;
+        /**
+          * @default ''
+         */
+        "title": string;
+        /**
+          * @default ''
+         */
+        "width": string;
     }
     interface MyComponent {
         /**
@@ -95,6 +114,29 @@ export namespace Components {
     interface TestComponent {
         "text_button": string;
     }
+    interface TooltipComponent {
+        /**
+          * @default TOOLTIP_ALIGNMENT.TOP
+         */
+        "alignment": TooltipAlignment;
+        "text": string;
+    }
+}
+export interface CheckComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCheckComponentElement;
+}
+export interface InputComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInputComponentElement;
+}
+export interface ModalComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLModalComponentElement;
+}
+export interface SelectComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSelectComponentElement;
 }
 declare global {
     interface HTMLAppCarouselElement extends Components.AppCarousel, HTMLStencilElement {
@@ -104,10 +146,35 @@ declare global {
         new (): HTMLAppCarouselElement;
     };
     interface HTMLInputComponentElement extends Components.InputComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInputComponentElementEventMap>(type: K, listener: (this: HTMLInputComponentElement, ev: InputComponentCustomEvent<HTMLInputComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInputComponentElementEventMap>(type: K, listener: (this: HTMLInputComponentElement, ev: InputComponentCustomEvent<HTMLInputComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLInputComponentElement: {
         prototype: HTMLInputComponentElement;
         new (): HTMLInputComponentElement;
+    };
+    interface HTMLModalComponentElementEventMap {
+        "modalClosed": void;
+    }
+    interface HTMLModalComponentElement extends Components.ModalComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLModalComponentElementEventMap>(type: K, listener: (this: HTMLModalComponentElement, ev: ModalComponentCustomEvent<HTMLModalComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLModalComponentElementEventMap>(type: K, listener: (this: HTMLModalComponentElement, ev: ModalComponentCustomEvent<HTMLModalComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLModalComponentElement: {
+        prototype: HTMLModalComponentElement;
+        new (): HTMLModalComponentElement;
     };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
@@ -127,12 +194,20 @@ declare global {
         prototype: HTMLTestComponentElement;
         new (): HTMLTestComponentElement;
     };
+    interface HTMLTooltipComponentElement extends Components.TooltipComponent, HTMLStencilElement {
+    }
+    var HTMLTooltipComponentElement: {
+        prototype: HTMLTooltipComponentElement;
+        new (): HTMLTooltipComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "app-carousel": HTMLAppCarouselElement;
         "input-component": HTMLInputComponentElement;
+        "modal-component": HTMLModalComponentElement;
         "my-component": HTMLMyComponentElement;
         "nd-text": HTMLNdTextElement;
         "test-component": HTMLTestComponentElement;
+        "tooltip-component": HTMLTooltipComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -169,13 +244,32 @@ declare namespace LocalJSX {
     interface InputComponent {
         "class"?: string;
         "name"?: string;
+        "onInputTarget"?: (event: InputComponentCustomEvent<{ name: string; value: string }>) => void;
         "text_error"?: string;
         "text_label"?: string;
         /**
           * @default 'text'
          */
         "type"?: string;
-        "value"?: string;
+    }
+    interface ModalComponent {
+        /**
+          * @default ''
+         */
+        "height"?: string;
+        /**
+          * @default false
+         */
+        "is_open"?: boolean;
+        "onModalClosed"?: (event: ModalComponentCustomEvent<void>) => void;
+        /**
+          * @default ''
+         */
+        "title"?: string;
+        /**
+          * @default ''
+         */
+        "width"?: string;
     }
     interface MyComponent {
         /**
@@ -225,12 +319,21 @@ declare namespace LocalJSX {
     interface TestComponent {
         "text_button"?: string;
     }
+    interface TooltipComponent {
+        /**
+          * @default TOOLTIP_ALIGNMENT.TOP
+         */
+        "alignment"?: TooltipAlignment;
+        "text"?: string;
+    }
     interface IntrinsicElements {
         "app-carousel": AppCarousel;
         "input-component": InputComponent;
+        "modal-component": ModalComponent;
         "my-component": MyComponent;
         "nd-text": NdText;
         "test-component": TestComponent;
+        "tooltip-component": TooltipComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -239,9 +342,11 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-carousel": LocalJSX.AppCarousel & JSXBase.HTMLAttributes<HTMLAppCarouselElement>;
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
+            "modal-component": LocalJSX.ModalComponent & JSXBase.HTMLAttributes<HTMLModalComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "nd-text": LocalJSX.NdText & JSXBase.HTMLAttributes<HTMLNdTextElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
+            "tooltip-component": LocalJSX.TooltipComponent & JSXBase.HTMLAttributes<HTMLTooltipComponentElement>;
         }
     }
 }

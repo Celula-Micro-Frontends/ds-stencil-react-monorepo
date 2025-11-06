@@ -1,0 +1,18 @@
+.container-check{
+    display: flex;
+    align-items: center;
+}
+
+.check-component{
+    margin-right: 1rem;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.label-error {
+    font-size: 0.8rem;
+    color: red;
+    margin-top: 0.3rem;
+}

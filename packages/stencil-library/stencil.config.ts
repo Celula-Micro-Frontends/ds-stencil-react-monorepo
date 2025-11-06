@@ -5,6 +5,7 @@ import { sass } from '@stencil/sass';
 export const config: Config = {
   namespace: 'stencil-library',
   
+  globalStyle: 'src/styles/styles.scss',
   outputTargets: [
     reactOutputTarget({
       outDir: '../react-library/lib/components/stencil-generated/',

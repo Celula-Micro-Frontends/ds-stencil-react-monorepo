@@ -13,6 +13,7 @@ import React from 'react';
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
+import { TooltipComponent as TooltipComponentElement, defineCustomElement as defineTooltipComponent } from "stencil-library/dist/components/tooltip-component.js";
 
 export type InputComponentEvents = NonNullable<unknown>;
 
@@ -45,4 +46,15 @@ export const TestComponent: StencilReactComponent<TestComponentElement, TestComp
     react: React,
     events: {} as TestComponentEvents,
     defineCustomElement: defineTestComponent
+});
+
+export type TooltipComponentEvents = NonNullable<unknown>;
+
+export const TooltipComponent: StencilReactComponent<TooltipComponentElement, TooltipComponentEvents> = /*@__PURE__*/ createComponent<TooltipComponentElement, TooltipComponentEvents>({
+    tagName: 'tooltip-component',
+    elementClass: TooltipComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as TooltipComponentEvents,
+    defineCustomElement: defineTooltipComponent
 });

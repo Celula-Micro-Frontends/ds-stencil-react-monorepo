@@ -1,0 +1,167 @@
+@use '../../styles/tokens/index.scss';
+
+@mixin box-alignment-top($background-color) {
+  &.tooltip-alignment-top {
+    @include box-top-bottom('top', -115%);
+
+    .tooltip-arrow {
+      @include box-arrow-top-bottom('top');
+
+      .tooltip-arrow-bg {
+        @include box-arrow-bg('top', $background-color);
+      }
+    }
+  }
+}
+
+@mixin box-alignment-bottom($background-color) {
+  &.tooltip-alignment-bottom {
+    @include box-top-bottom('bottom', 115%);
+
+    .tooltip-arrow {
+      @include box-arrow-top-bottom('bottom');
+
+      .tooltip-arrow-bg {
+        @include box-arrow-bg('bottom', $background-color);
+      }
+    }
+  }
+}
+
+@mixin box-alignment-left($background-color, $border-color) {
+  &.tooltip-alignment-left {
+    @include box-left-right('left');
+
+    .tooltip-arrow {
+      @include box-arrow-left-right('left');
+
+      .tooltip-arrow-bg {
+        @include box-arrow-bg('left', $background-color);
+      }
+    }
+  }
+}
+
+@mixin box-alignment-right($background-color, $border-color) {
+  &.tooltip-alignment-right {
+    @include box-left-right('right');
+
+    .tooltip-arrow {
+      @include box-arrow-left-right('right');
+
+      .tooltip-arrow-bg {
+        @include box-arrow-bg('right', $background-color);
+      }
+    }
+  }
+}
+
+@mixin box-top-bottom($alignment, $translate-y) {
+  left: 50%;
+  transform: translateY($translate-y) translateX(-50%);
+
+  @if $alignment == 'top' {
+    top: -5px;
+  } @else {
+    bottom: -5px;
+  }
+}
+
+@mixin box-left-right($alignment) {
+  top: 50%;
+  transform: translateY(-50%);
+
+  @if $alignment == 'left' {
+    left: 100%;
+    margin-left: var(--ntt-spacing-2xs);
+  } @else {
+    right: 100%;
+    margin-right: var(--ntt-spacing-2xs);
+  }
+}
+
+@mixin box-arrow-top-bottom($alignment) {
+  position: absolute;
+  left: 50%;
+  margin-left: -8px;
+
+  @if $alignment == 'top' {
+    bottom: 0;
+  } @else {
+    top: 0;
+  }
+}
+
+@mixin box-arrow-left-right($alignment) {
+  top: 50%;
+  position: absolute;
+  margin-top: -4px;
+  width: 9px;
+
+  @if $alignment == 'left' {
+    left: -9px;
+  } @else {
+    right: -4px;
+  }
+}
+
+@mixin box-arrow-bg($alignment, $background-color) {
+  position: absolute;
+  background: $background-color;
+
+  @if $alignment == 'top' {
+    bottom: -7px;
+    transform: rotate(-180deg);
+  } @else if $alignment == 'bottom' {
+    top: -7px;
+  } @else if $alignment == 'left' {
+    right: -5px;
+    transform: rotate(-90deg);
+  } @else {
+    transform: rotate(90deg);
+  }
+
+  @include triangle-top-bottom;
+}
+
+@mixin triangle-top-bottom() {
+  height: 8px;
+  width: 16px;
+  aspect-ratio: 1;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+:host {
+  .tooltip {
+    position: relative;
+    display: inline-block;
+
+    .tooltip-content {
+      display: flex;
+    }
+
+    .tooltip-text {
+      background-color: var(--ntt-color-primary-100);
+      border-radius: var(--ntt-radius-12);
+      color: var(--ntt-color-secondary-900);
+      font-size: var(--ntt-font-size-b1);
+      padding: var(--ntt-spacing-sm) var(--ntt-spacing-s);
+      position: absolute;
+      text-align: center;
+      visibility: hidden;
+      width: max-content;
+      z-index: 1;
+
+      @include box-alignment-top(var(--ntt-color-primary-100));
+      @include box-alignment-bottom(var(--ntt-color-primary-100));
+      @include box-alignment-left(var(--ntt-color-primary-100), var(--ntt-color-blue-800));
+      @include box-alignment-right(var(--ntt-color-primary-100), var(--ntt-color-blue-800));
+    }
+
+    &:hover {
+      .tooltip-text {
+        visibility: visible;
+      }
+    }
+  }
+}

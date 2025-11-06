@@ -10,26 +10,25 @@
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
-import { CheckComponent as CheckComponentElement, defineCustomElement as defineCheckComponent } from "stencil-library/dist/components/check-component.js";
+import { AppCarousel as AppCarouselElement, defineCustomElement as defineAppCarousel } from "stencil-library/dist/components/app-carousel.js";
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
 import { ModalComponent as ModalComponentElement, defineCustomElement as defineModalComponent } from "stencil-library/dist/components/modal-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
-import { SelectComponent as SelectComponentElement, defineCustomElement as defineSelectComponent } from "stencil-library/dist/components/select-component.js";
+import { NdText as NdTextElement, defineCustomElement as defineNdText } from "stencil-library/dist/components/nd-text.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
-import { TooltipComponent as TooltipComponentElement, defineCustomElement as defineTooltipComponent } from "stencil-library/dist/components/tooltip-component.js";
 
-export type CheckComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
+export type AppCarouselEvents = NonNullable<unknown>;
 
-export const CheckComponent: StencilReactComponent<CheckComponentElement, CheckComponentEvents> = /*@__PURE__*/ createComponent<CheckComponentElement, CheckComponentEvents>({
-    tagName: 'check-component',
-    elementClass: CheckComponentElement,
+export const AppCarousel: StencilReactComponent<AppCarouselElement, AppCarouselEvents> = /*@__PURE__*/ createComponent<AppCarouselElement, AppCarouselEvents>({
+    tagName: 'app-carousel',
+    elementClass: AppCarouselElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onInputTarget: 'inputTarget' } as CheckComponentEvents,
-    defineCustomElement: defineCheckComponent
+    events: {} as AppCarouselEvents,
+    defineCustomElement: defineAppCarousel
 });
 
-export type InputComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
+export type InputComponentEvents = NonNullable<unknown>;
 
 export const InputComponent: StencilReactComponent<InputComponentElement, InputComponentEvents> = /*@__PURE__*/ createComponent<InputComponentElement, InputComponentEvents>({
     tagName: 'input-component',
@@ -62,15 +61,15 @@ export const MyComponent: StencilReactComponent<MyComponentElement, MyComponentE
     defineCustomElement: defineMyComponent
 });
 
-export type SelectComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
+export type NdTextEvents = NonNullable<unknown>;
 
-export const SelectComponent: StencilReactComponent<SelectComponentElement, SelectComponentEvents> = /*@__PURE__*/ createComponent<SelectComponentElement, SelectComponentEvents>({
-    tagName: 'select-component',
-    elementClass: SelectComponentElement,
+export const NdText: StencilReactComponent<NdTextElement, NdTextEvents> = /*@__PURE__*/ createComponent<NdTextElement, NdTextEvents>({
+    tagName: 'nd-text',
+    elementClass: NdTextElement,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
-    events: { onInputTarget: 'inputTarget' } as SelectComponentEvents,
-    defineCustomElement: defineSelectComponent
+    events: {} as NdTextEvents,
+    defineCustomElement: defineNdText
 });
 
 export type TestComponentEvents = NonNullable<unknown>;

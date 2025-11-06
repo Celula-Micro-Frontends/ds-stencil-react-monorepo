@@ -4,6 +4,7 @@ import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'stencil-library',
+  
   outputTargets: [
     reactOutputTarget({
       outDir: '../react-library/lib/components/stencil-generated/',

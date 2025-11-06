@@ -8,16 +8,35 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
 export { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
 export namespace Components {
-    interface CheckComponent {
-        "class": string;
-        "name": string;
-        "text_error": string;
-        "text_label": string;
+    interface AppCarousel {
         /**
-          * @default 'check'
+          * @default '400px'
          */
-        "type": string;
-        "value": string;
+        "height": string;
+        /**
+          * @default []
+         */
+        "images": string[];
+        /**
+          * @default 3000
+         */
+        "interval": number;
+        /**
+          * @default 'contain'
+         */
+        "objectFit": 'cover' | 'contain';
+        /**
+          * @default []
+         */
+        "texts"?: string[];
+        /**
+          * @default 'slider'
+         */
+        "variant": 'slider' | 'dots' | 'mixed';
+        /**
+          * @default '100%'
+         */
+        "width": string;
     }
     interface InputComponent {
         "class": string;
@@ -61,12 +80,36 @@ export namespace Components {
          */
         "middle": string;
     }
-    interface SelectComponent {
-        "class": string;
-        "data": [{ value: string; text: string }];
-        "name": string;
-        "text_error": string;
-        "text_label": string;
+    interface NdText {
+        /**
+          * @default 'left'
+         */
+        "align": 'left' | 'center' | 'right' | 'justify';
+        "color"?: string;
+        "customClass"?: string;
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        "href"?: string;
+        "htmlFor"?: string;
+        "maxLines"?: number;
+        /**
+          * @default '_self'
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
+        /**
+          * @default false
+         */
+        "truncate": boolean;
+        /**
+          * @default 'p'
+         */
+        "variant": 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'link' | 'error' | 'caption' | 'small';
+        /**
+          * @default 'normal'
+         */
+        "weight": 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
     }
     interface TestComponent {
         "text_button": string;
@@ -96,26 +139,12 @@ export interface SelectComponentCustomEvent<T> extends CustomEvent<T> {
     target: HTMLSelectComponentElement;
 }
 declare global {
-    interface HTMLCheckComponentElementEventMap {
-        "inputTarget": { name: string; value: string };
+    interface HTMLAppCarouselElement extends Components.AppCarousel, HTMLStencilElement {
     }
-    interface HTMLCheckComponentElement extends Components.CheckComponent, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLCheckComponentElementEventMap>(type: K, listener: (this: HTMLCheckComponentElement, ev: CheckComponentCustomEvent<HTMLCheckComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLCheckComponentElementEventMap>(type: K, listener: (this: HTMLCheckComponentElement, ev: CheckComponentCustomEvent<HTMLCheckComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLCheckComponentElement: {
-        prototype: HTMLCheckComponentElement;
-        new (): HTMLCheckComponentElement;
+    var HTMLAppCarouselElement: {
+        prototype: HTMLAppCarouselElement;
+        new (): HTMLAppCarouselElement;
     };
-    interface HTMLInputComponentElementEventMap {
-        "inputTarget": { name: string; value: string };
-    }
     interface HTMLInputComponentElement extends Components.InputComponent, HTMLStencilElement {
         addEventListener<K extends keyof HTMLInputComponentElementEventMap>(type: K, listener: (this: HTMLInputComponentElement, ev: InputComponentCustomEvent<HTMLInputComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -153,22 +182,11 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
-    interface HTMLSelectComponentElementEventMap {
-        "inputTarget": { name: string; value: string };
+    interface HTMLNdTextElement extends Components.NdText, HTMLStencilElement {
     }
-    interface HTMLSelectComponentElement extends Components.SelectComponent, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLSelectComponentElementEventMap>(type: K, listener: (this: HTMLSelectComponentElement, ev: SelectComponentCustomEvent<HTMLSelectComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLSelectComponentElementEventMap>(type: K, listener: (this: HTMLSelectComponentElement, ev: SelectComponentCustomEvent<HTMLSelectComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLSelectComponentElement: {
-        prototype: HTMLSelectComponentElement;
-        new (): HTMLSelectComponentElement;
+    var HTMLNdTextElement: {
+        prototype: HTMLNdTextElement;
+        new (): HTMLNdTextElement;
     };
     interface HTMLTestComponentElement extends Components.TestComponent, HTMLStencilElement {
     }
@@ -183,27 +201,45 @@ declare global {
         new (): HTMLTooltipComponentElement;
     };
     interface HTMLElementTagNameMap {
-        "check-component": HTMLCheckComponentElement;
+        "app-carousel": HTMLAppCarouselElement;
         "input-component": HTMLInputComponentElement;
         "modal-component": HTMLModalComponentElement;
         "my-component": HTMLMyComponentElement;
-        "select-component": HTMLSelectComponentElement;
+        "nd-text": HTMLNdTextElement;
         "test-component": HTMLTestComponentElement;
         "tooltip-component": HTMLTooltipComponentElement;
     }
 }
 declare namespace LocalJSX {
-    interface CheckComponent {
-        "class"?: string;
-        "name"?: string;
-        "onInputTarget"?: (event: CheckComponentCustomEvent<{ name: string; value: string }>) => void;
-        "text_error"?: string;
-        "text_label"?: string;
+    interface AppCarousel {
         /**
-          * @default 'check'
+          * @default '400px'
          */
-        "type"?: string;
-        "value"?: string;
+        "height"?: string;
+        /**
+          * @default []
+         */
+        "images"?: string[];
+        /**
+          * @default 3000
+         */
+        "interval"?: number;
+        /**
+          * @default 'contain'
+         */
+        "objectFit"?: 'cover' | 'contain';
+        /**
+          * @default []
+         */
+        "texts"?: string[];
+        /**
+          * @default 'slider'
+         */
+        "variant"?: 'slider' | 'dots' | 'mixed';
+        /**
+          * @default '100%'
+         */
+        "width"?: string;
     }
     interface InputComponent {
         "class"?: string;
@@ -249,13 +285,36 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
-    interface SelectComponent {
-        "class"?: string;
-        "data"?: [{ value: string; text: string }];
-        "name"?: string;
-        "onInputTarget"?: (event: SelectComponentCustomEvent<{ name: string; value: string }>) => void;
-        "text_error"?: string;
-        "text_label"?: string;
+    interface NdText {
+        /**
+          * @default 'left'
+         */
+        "align"?: 'left' | 'center' | 'right' | 'justify';
+        "color"?: string;
+        "customClass"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        "href"?: string;
+        "htmlFor"?: string;
+        "maxLines"?: number;
+        /**
+          * @default '_self'
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
+        /**
+          * @default false
+         */
+        "truncate"?: boolean;
+        /**
+          * @default 'p'
+         */
+        "variant"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'link' | 'error' | 'caption' | 'small';
+        /**
+          * @default 'normal'
+         */
+        "weight"?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
     }
     interface TestComponent {
         "text_button"?: string;
@@ -268,11 +327,11 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface IntrinsicElements {
-        "check-component": CheckComponent;
+        "app-carousel": AppCarousel;
         "input-component": InputComponent;
         "modal-component": ModalComponent;
         "my-component": MyComponent;
-        "select-component": SelectComponent;
+        "nd-text": NdText;
         "test-component": TestComponent;
         "tooltip-component": TooltipComponent;
     }
@@ -281,11 +340,11 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "check-component": LocalJSX.CheckComponent & JSXBase.HTMLAttributes<HTMLCheckComponentElement>;
+            "app-carousel": LocalJSX.AppCarousel & JSXBase.HTMLAttributes<HTMLAppCarouselElement>;
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
             "modal-component": LocalJSX.ModalComponent & JSXBase.HTMLAttributes<HTMLModalComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "select-component": LocalJSX.SelectComponent & JSXBase.HTMLAttributes<HTMLSelectComponentElement>;
+            "nd-text": LocalJSX.NdText & JSXBase.HTMLAttributes<HTMLNdTextElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
             "tooltip-component": LocalJSX.TooltipComponent & JSXBase.HTMLAttributes<HTMLTooltipComponentElement>;
         }

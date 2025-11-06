@@ -10,18 +10,18 @@ export class AppCarousel {
   @Prop() images: string[] = [];
   @Prop() texts?: string[] = [];
   @Prop() interval: number = 3000;
-  @Prop() width: string = '100%';      // 🔹 Nuevo
-  @Prop() height: string = '400px';    // 🔹 Nuevo
-  @Prop() objectFit: 'cover' | 'contain' = 'contain'; // 🔹 Controla cómo se ajusta la imagen
+  @Prop() width: string = '100%';     
+  @Prop() height: string = '400px';   
+  @Prop() objectFit: 'cover' | 'contain' = 'contain'; 
 
   @State() currentIndex: number = 0;
   private intervalId: any;
 
-  componentDidLoad() {
-    if (this.variant === 'slider' || this.variant === 'mixed') {
-      this.startAutoSlide();
-    }
+componentDidLoad() {
+  if (['slider', 'mixed', 'dots'].includes(this.variant)) {
+    this.startAutoSlide();
   }
+}
 
   disconnectedCallback() {
     this.stopAutoSlide();

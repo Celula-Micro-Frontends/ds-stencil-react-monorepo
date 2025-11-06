@@ -6,59 +6,27 @@ import { Component, Prop, h } from '@stencil/core';
   shadow: true,
 })
 export class TextComponent  {
-  /**
-   * Tipo de texto a renderizar
-   */
+
   @Prop() variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'link' | 'error' | 'caption' | 'small' = 'p';
 
-  /**
-   * Peso de la fuente
-   */
   @Prop() weight: 'light' | 'normal' | 'medium' | 'semibold' | 'bold' = 'normal';
 
-  /**
-   * Alineación del texto
-   */
   @Prop() align: 'left' | 'center' | 'right' | 'justify' = 'left';
 
-  /**
-   * Color personalizado (puede ser cualquier valor CSS válido)
-   */
   @Prop() color?: string;
 
-  /**
-   * Para enlaces: URL de destino
-   */
   @Prop() href?: string;
 
-  /**
-   * Para enlaces: abrir en nueva pestaña
-   */
   @Prop() target?: '_blank' | '_self' | '_parent' | '_top' = '_self';
 
-  /**
-   * Para labels: ID del input asociado
-   */
   @Prop() htmlFor?: string;
 
-  /**
-   * Truncar texto con ellipsis
-   */
   @Prop() truncate: boolean = false;
 
-  /**
-   * Número máximo de líneas antes de truncar
-   */
   @Prop() maxLines?: number;
 
-  /**
-   * Clase CSS adicional
-   */
   @Prop() customClass?: string;
 
-  /**
-   * Deshabilitar el elemento (útil para enlaces)
-   */
   @Prop() disabled: boolean = false;
 
   private getClasses(): string {

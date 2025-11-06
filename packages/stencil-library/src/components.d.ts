@@ -63,52 +63,31 @@ export namespace Components {
     }
     interface NdText {
         /**
-          * Alineación del texto
           * @default 'left'
          */
         "align": 'left' | 'center' | 'right' | 'justify';
-        /**
-          * Color personalizado (puede ser cualquier valor CSS válido)
-         */
         "color"?: string;
-        /**
-          * Clase CSS adicional
-         */
         "customClass"?: string;
         /**
-          * Deshabilitar el elemento (útil para enlaces)
           * @default false
          */
         "disabled": boolean;
-        /**
-          * Para enlaces: URL de destino
-         */
         "href"?: string;
-        /**
-          * Para labels: ID del input asociado
-         */
         "htmlFor"?: string;
-        /**
-          * Número máximo de líneas antes de truncar
-         */
         "maxLines"?: number;
         /**
-          * Para enlaces: abrir en nueva pestaña
           * @default '_self'
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top';
         /**
-          * Truncar texto con ellipsis
           * @default false
          */
         "truncate": boolean;
         /**
-          * Tipo de texto a renderizar
           * @default 'p'
          */
         "variant": 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'link' | 'error' | 'caption' | 'small';
         /**
-          * Peso de la fuente
           * @default 'normal'
          */
         "weight": 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
@@ -214,52 +193,31 @@ declare namespace LocalJSX {
     }
     interface NdText {
         /**
-          * Alineación del texto
           * @default 'left'
          */
         "align"?: 'left' | 'center' | 'right' | 'justify';
-        /**
-          * Color personalizado (puede ser cualquier valor CSS válido)
-         */
         "color"?: string;
-        /**
-          * Clase CSS adicional
-         */
         "customClass"?: string;
         /**
-          * Deshabilitar el elemento (útil para enlaces)
           * @default false
          */
         "disabled"?: boolean;
-        /**
-          * Para enlaces: URL de destino
-         */
         "href"?: string;
-        /**
-          * Para labels: ID del input asociado
-         */
         "htmlFor"?: string;
-        /**
-          * Número máximo de líneas antes de truncar
-         */
         "maxLines"?: number;
         /**
-          * Para enlaces: abrir en nueva pestaña
           * @default '_self'
          */
         "target"?: '_blank' | '_self' | '_parent' | '_top';
         /**
-          * Truncar texto con ellipsis
           * @default false
          */
         "truncate"?: boolean;
         /**
-          * Tipo de texto a renderizar
           * @default 'p'
          */
         "variant"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'link' | 'error' | 'caption' | 'small';
         /**
-          * Peso de la fuente
           * @default 'normal'
          */
         "weight"?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';

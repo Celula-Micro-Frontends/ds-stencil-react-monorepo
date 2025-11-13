@@ -8,6 +8,11 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
 export { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
 export namespace Components {
+    interface CardComponent {
+        "cardTitle": string;
+        "description": string;
+        "link": string;
+    }
     interface AppCarousel {
         /**
           * @default '400px'
@@ -114,6 +119,12 @@ export namespace Components {
     interface TestComponent {
         "text_button": string;
     }
+    interface ToastComponent {
+        "autoclose": boolean;
+        "description": string;
+        "title": string;
+        "type": string;
+    }
     interface TooltipComponent {
         /**
           * @default TOOLTIP_ALIGNMENT.TOP
@@ -139,6 +150,12 @@ export interface SelectComponentCustomEvent<T> extends CustomEvent<T> {
     target: HTMLSelectComponentElement;
 }
 declare global {
+    interface HTMLCardComponentElement extends Components.CardComponent, HTMLStencilElement {
+    }
+    var HTMLCardComponentElement: {
+        prototype: HTMLCardComponentElement;
+        new (): HTMLCardComponentElement;
+    };
     interface HTMLAppCarouselElement extends Components.AppCarousel, HTMLStencilElement {
     }
     var HTMLAppCarouselElement: {
@@ -194,6 +211,12 @@ declare global {
         prototype: HTMLTestComponentElement;
         new (): HTMLTestComponentElement;
     };
+    interface HTMLToastComponentElement extends Components.ToastComponent, HTMLStencilElement {
+    }
+    var HTMLToastComponentElement: {
+        prototype: HTMLToastComponentElement;
+        new (): HTMLToastComponentElement;
+    };
     interface HTMLTooltipComponentElement extends Components.TooltipComponent, HTMLStencilElement {
     }
     var HTMLTooltipComponentElement: {
@@ -201,16 +224,23 @@ declare global {
         new (): HTMLTooltipComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "card-component": HTMLCardComponentElement;
         "app-carousel": HTMLAppCarouselElement;
         "input-component": HTMLInputComponentElement;
         "modal-component": HTMLModalComponentElement;
         "my-component": HTMLMyComponentElement;
         "nd-text": HTMLNdTextElement;
         "test-component": HTMLTestComponentElement;
+        "toast-component": HTMLToastComponentElement;
         "tooltip-component": HTMLTooltipComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CardComponent {
+        "cardTitle"?: string;
+        "description"?: string;
+        "link"?: string;
+    }
     interface AppCarousel {
         /**
           * @default '400px'
@@ -319,6 +349,12 @@ declare namespace LocalJSX {
     interface TestComponent {
         "text_button"?: string;
     }
+    interface ToastComponent {
+        "autoclose"?: boolean;
+        "description"?: string;
+        "title"?: string;
+        "type"?: string;
+    }
     interface TooltipComponent {
         /**
           * @default TOOLTIP_ALIGNMENT.TOP
@@ -327,12 +363,14 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface IntrinsicElements {
+        "card-component": CardComponent;
         "app-carousel": AppCarousel;
         "input-component": InputComponent;
         "modal-component": ModalComponent;
         "my-component": MyComponent;
         "nd-text": NdText;
         "test-component": TestComponent;
+        "toast-component": ToastComponent;
         "tooltip-component": TooltipComponent;
     }
 }
@@ -340,12 +378,14 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "card-component": LocalJSX.CardComponent & JSXBase.HTMLAttributes<HTMLCardComponentElement>;
             "app-carousel": LocalJSX.AppCarousel & JSXBase.HTMLAttributes<HTMLAppCarouselElement>;
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
             "modal-component": LocalJSX.ModalComponent & JSXBase.HTMLAttributes<HTMLModalComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "nd-text": LocalJSX.NdText & JSXBase.HTMLAttributes<HTMLNdTextElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
+            "toast-component": LocalJSX.ToastComponent & JSXBase.HTMLAttributes<HTMLToastComponentElement>;
             "tooltip-component": LocalJSX.TooltipComponent & JSXBase.HTMLAttributes<HTMLTooltipComponentElement>;
         }
     }

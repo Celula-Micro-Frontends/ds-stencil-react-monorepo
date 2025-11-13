@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div style="padding: 20px;">
+  <div style="padding: 20px; font-family: Arial, sans-serif;">
     <h1>Stencil Components Demo</h1>
 
     <h2>Test Component</h2>
@@ -20,10 +20,22 @@
 
       <loader-component type="bubbles" svg-size="100" text=" NTTDATA"></loader-component>
 
-
-
-
     </div>
+
+
+
+    <section style="margin: 20px 0;">
+      <h3>Tags de Tecnología</h3>
+      <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <tag-component text="JavaScript" bg-color="#F7DF1E" text-color="#000000" clickable="true" icon="👾"
+          closable="true"></tag-component>
+        <tag-component text="React" bg-color="#61DAFB" text-color="#000000" clickable="true"></tag-component>
+        <tag-component text="TypeScript" bg-color="#3178C6" clickable="true" closable="true"></tag-component>
+        <tag-component text="Vue.js" bg-color="#42B883" clickable="true" closable="true"></tag-component>
+        <tag-component text="Angular" bg-color="#DD0031" clickable="true" closable="true"></tag-component>
+        <tag-component text="Node.js" bg-color="#339933" clickable="true" closable="true"></tag-component>
+      </div>
+    </section>
 
   </div>
 

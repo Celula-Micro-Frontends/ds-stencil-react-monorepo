@@ -7,12 +7,13 @@
 
 /* eslint-disable */
 
-import type { StencilReactComponent } from '@stencil/react-output-target/runtime';
+import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
 import { LoaderComponent as LoaderComponentElement, defineCustomElement as defineLoaderComponent } from "stencil-library/dist/components/loader-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
+import { TagComponent as TagComponentElement, defineCustomElement as defineTagComponent } from "stencil-library/dist/components/tag-component.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
 
 export type InputComponentEvents = NonNullable<unknown>;
@@ -46,6 +47,27 @@ export const MyComponent: StencilReactComponent<MyComponentElement, MyComponentE
     react: React,
     events: {} as MyComponentEvents,
     defineCustomElement: defineMyComponent
+});
+
+export type TagComponentEvents = {
+    onTagClick: EventName<CustomEvent<void>>,
+    onTagClose: EventName<CustomEvent<void>>,
+    onTagMouseEnter: EventName<CustomEvent<void>>,
+    onTagMouseLeave: EventName<CustomEvent<void>>
+};
+
+export const TagComponent: StencilReactComponent<TagComponentElement, TagComponentEvents> = /*@__PURE__*/ createComponent<TagComponentElement, TagComponentEvents>({
+    tagName: 'tag-component',
+    elementClass: TagComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onTagClick: 'tagClick',
+        onTagClose: 'tagClose',
+        onTagMouseEnter: 'tagMouseEnter',
+        onTagMouseLeave: 'tagMouseLeave'
+    } as TagComponentEvents,
+    defineCustomElement: defineTagComponent
 });
 
 export type TestComponentEvents = NonNullable<unknown>;

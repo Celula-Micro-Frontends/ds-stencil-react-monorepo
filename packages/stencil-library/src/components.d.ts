@@ -143,9 +143,94 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface TagComponent {
+        /**
+          * Color de fondo del tag
+          * @default '#0FC2C0'
+         */
+        "bgColor": string;
+        /**
+          * Color del borde (para variantes outlined y ghost)
+          * @default '#0FC2C0'
+         */
+        "borderColor": string;
+        /**
+          * Radio del borde personalizado
+         */
+        "borderRadius": string;
+        /**
+          * Si el tag es clickeable
+          * @default false
+         */
+        "clickable": boolean;
+        /**
+          * Si el tag tiene botón de cierre
+          * @default false
+         */
+        "closable": boolean;
+        /**
+          * Si el tag está deshabilitado
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Tamaño de fuente personalizado
+         */
+        "fontSize": string;
+        /**
+          * Altura personalizada (opcional)
+         */
+        "height": string;
+        /**
+          * Icono personalizado (puede ser un emoji o HTML)
+         */
+        "icon": string;
+        /**
+          * Posición del icono: 'left' o 'right'
+          * @default 'left'
+         */
+        "iconPosition": 'left' | 'right';
+        /**
+          * Padding personalizado
+         */
+        "padding": string;
+        /**
+          * Forma del tag: 'rounded', 'pill', 'square'
+          * @default 'rounded'
+         */
+        "shape": 'rounded' | 'pill' | 'square';
+        /**
+          * Tamaño del tag: 'small', 'medium', 'large'
+          * @default 'medium'
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Texto del tag
+          * @default 'Tag'
+         */
+        "text": string;
+        /**
+          * Color del texto
+          * @default '#ffffff'
+         */
+        "textColor": string;
+        /**
+          * Variante del tag: 'filled', 'outlined', 'ghost'
+          * @default 'filled'
+         */
+        "variant": 'filled' | 'outlined' | 'ghost';
+        /**
+          * Ancho personalizado (opcional)
+         */
+        "width": string;
+    }
     interface TestComponent {
         "text_button": string;
     }
+}
+export interface TagComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTagComponentElement;
 }
 declare global {
     interface HTMLInputComponentElement extends Components.InputComponent, HTMLStencilElement {
@@ -166,6 +251,26 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLTagComponentElementEventMap {
+        "tagClick": void;
+        "tagClose": void;
+        "tagMouseEnter": void;
+        "tagMouseLeave": void;
+    }
+    interface HTMLTagComponentElement extends Components.TagComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTagComponentElementEventMap>(type: K, listener: (this: HTMLTagComponentElement, ev: TagComponentCustomEvent<HTMLTagComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTagComponentElementEventMap>(type: K, listener: (this: HTMLTagComponentElement, ev: TagComponentCustomEvent<HTMLTagComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTagComponentElement: {
+        prototype: HTMLTagComponentElement;
+        new (): HTMLTagComponentElement;
+    };
     interface HTMLTestComponentElement extends Components.TestComponent, HTMLStencilElement {
     }
     var HTMLTestComponentElement: {
@@ -176,6 +281,7 @@ declare global {
         "input-component": HTMLInputComponentElement;
         "loader-component": HTMLLoaderComponentElement;
         "my-component": HTMLMyComponentElement;
+        "tag-component": HTMLTagComponentElement;
         "test-component": HTMLTestComponentElement;
     }
 }
@@ -317,6 +423,103 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface TagComponent {
+        /**
+          * Color de fondo del tag
+          * @default '#0FC2C0'
+         */
+        "bgColor"?: string;
+        /**
+          * Color del borde (para variantes outlined y ghost)
+          * @default '#0FC2C0'
+         */
+        "borderColor"?: string;
+        /**
+          * Radio del borde personalizado
+         */
+        "borderRadius"?: string;
+        /**
+          * Si el tag es clickeable
+          * @default false
+         */
+        "clickable"?: boolean;
+        /**
+          * Si el tag tiene botón de cierre
+          * @default false
+         */
+        "closable"?: boolean;
+        /**
+          * Si el tag está deshabilitado
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Tamaño de fuente personalizado
+         */
+        "fontSize"?: string;
+        /**
+          * Altura personalizada (opcional)
+         */
+        "height"?: string;
+        /**
+          * Icono personalizado (puede ser un emoji o HTML)
+         */
+        "icon"?: string;
+        /**
+          * Posición del icono: 'left' o 'right'
+          * @default 'left'
+         */
+        "iconPosition"?: 'left' | 'right';
+        /**
+          * Evento emitido cuando se hace click en el tag
+         */
+        "onTagClick"?: (event: TagComponentCustomEvent<void>) => void;
+        /**
+          * Evento emitido cuando se cierra el tag
+         */
+        "onTagClose"?: (event: TagComponentCustomEvent<void>) => void;
+        /**
+          * Evento emitido cuando el mouse entra en el tag
+         */
+        "onTagMouseEnter"?: (event: TagComponentCustomEvent<void>) => void;
+        /**
+          * Evento emitido cuando el mouse sale del tag
+         */
+        "onTagMouseLeave"?: (event: TagComponentCustomEvent<void>) => void;
+        /**
+          * Padding personalizado
+         */
+        "padding"?: string;
+        /**
+          * Forma del tag: 'rounded', 'pill', 'square'
+          * @default 'rounded'
+         */
+        "shape"?: 'rounded' | 'pill' | 'square';
+        /**
+          * Tamaño del tag: 'small', 'medium', 'large'
+          * @default 'medium'
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Texto del tag
+          * @default 'Tag'
+         */
+        "text"?: string;
+        /**
+          * Color del texto
+          * @default '#ffffff'
+         */
+        "textColor"?: string;
+        /**
+          * Variante del tag: 'filled', 'outlined', 'ghost'
+          * @default 'filled'
+         */
+        "variant"?: 'filled' | 'outlined' | 'ghost';
+        /**
+          * Ancho personalizado (opcional)
+         */
+        "width"?: string;
+    }
     interface TestComponent {
         "text_button"?: string;
     }
@@ -324,6 +527,7 @@ declare namespace LocalJSX {
         "input-component": InputComponent;
         "loader-component": LoaderComponent;
         "my-component": MyComponent;
+        "tag-component": TagComponent;
         "test-component": TestComponent;
     }
 }
@@ -334,6 +538,7 @@ declare module "@stencil/core" {
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
             "loader-component": LocalJSX.LoaderComponent & JSXBase.HTMLAttributes<HTMLLoaderComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "tag-component": LocalJSX.TagComponent & JSXBase.HTMLAttributes<HTMLTagComponentElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
         }
     }

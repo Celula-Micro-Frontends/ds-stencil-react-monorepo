@@ -18,9 +18,9 @@ import { InputComponent as InputComponentElement, defineCustomElement as defineI
 import { LoaderComponent as LoaderComponentElement, defineCustomElement as defineLoaderComponent } from "stencil-library/dist/components/loader-component.js";
 import { ModalComponent as ModalComponentElement, defineCustomElement as defineModalComponent } from "stencil-library/dist/components/modal-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
-import { TagComponent as TagComponentElement, defineCustomElement as defineTagComponent } from "stencil-library/dist/components/tag-component.js";
 import { NdText as NdTextElement, defineCustomElement as defineNdText } from "stencil-library/dist/components/nd-text.js";
 import { SelectComponent as SelectComponentElement, defineCustomElement as defineSelectComponent } from "stencil-library/dist/components/select-component.js";
+import { TagComponent as TagComponentElement, defineCustomElement as defineTagComponent } from "stencil-library/dist/components/tag-component.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
 import { ToastComponent as ToastComponentElement, defineCustomElement as defineToastComponent } from "stencil-library/dist/components/toast-component.js";
 import { TooltipComponent as TooltipComponentElement, defineCustomElement as defineTooltipComponent } from "stencil-library/dist/components/tooltip-component.js";
@@ -117,27 +117,6 @@ export const MyComponent: StencilReactComponent<MyComponentElement, MyComponentE
     defineCustomElement: defineMyComponent
 });
 
-export type TagComponentEvents = {
-    onTagClick: EventName<CustomEvent<void>>,
-    onTagClose: EventName<CustomEvent<void>>,
-    onTagMouseEnter: EventName<CustomEvent<void>>,
-    onTagMouseLeave: EventName<CustomEvent<void>>
-};
-
-export const TagComponent: StencilReactComponent<TagComponentElement, TagComponentEvents> = /*@__PURE__*/ createComponent<TagComponentElement, TagComponentEvents>({
-    tagName: 'tag-component',
-    elementClass: TagComponentElement,
-    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
-    react: React,
-    events: {
-        onTagClick: 'tagClick',
-        onTagClose: 'tagClose',
-        onTagMouseEnter: 'tagMouseEnter',
-        onTagMouseLeave: 'tagMouseLeave'
-    } as TagComponentEvents,
-    defineCustomElement: defineTagComponent
-});
-
 export type NdTextEvents = NonNullable<unknown>;
 
 export const NdText: StencilReactComponent<NdTextElement, NdTextEvents> = /*@__PURE__*/ createComponent<NdTextElement, NdTextEvents>({
@@ -158,6 +137,27 @@ export const SelectComponent: StencilReactComponent<SelectComponentElement, Sele
     react: React,
     events: { onInputTarget: 'inputTarget' } as SelectComponentEvents,
     defineCustomElement: defineSelectComponent
+});
+
+export type TagComponentEvents = {
+    onTagClick: EventName<CustomEvent<void>>,
+    onTagClose: EventName<CustomEvent<void>>,
+    onTagMouseEnter: EventName<CustomEvent<void>>,
+    onTagMouseLeave: EventName<CustomEvent<void>>
+};
+
+export const TagComponent: StencilReactComponent<TagComponentElement, TagComponentEvents> = /*@__PURE__*/ createComponent<TagComponentElement, TagComponentEvents>({
+    tagName: 'tag-component',
+    elementClass: TagComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onTagClick: 'tagClick',
+        onTagClose: 'tagClose',
+        onTagMouseEnter: 'tagMouseEnter',
+        onTagMouseLeave: 'tagMouseLeave'
+    } as TagComponentEvents,
+    defineCustomElement: defineTagComponent
 });
 
 export type TestComponentEvents = NonNullable<unknown>;

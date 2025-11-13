@@ -305,7 +305,6 @@ export namespace Components {
         "text_error": string;
         "text_label": string;
     }
-
     interface TagComponent {
         /**
           * Color de fondo del tag
@@ -390,7 +389,6 @@ export namespace Components {
     interface TestComponent {
         "text_button": string;
     }
-
     interface ToastComponent {
         "autoclose": boolean;
         "description": string;
@@ -424,10 +422,6 @@ export interface ModalComponentCustomEvent<T> extends CustomEvent<T> {
 export interface SelectComponentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSelectComponentElement;
-}
-export interface TagComponentCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLTagComponentElement;
 }
 export interface TagComponentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -528,26 +522,6 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
-    interface HTMLTagComponentElementEventMap {
-        "tagClick": void;
-        "tagClose": void;
-        "tagMouseEnter": void;
-        "tagMouseLeave": void;
-    }
-    interface HTMLTagComponentElement extends Components.TagComponent, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLTagComponentElementEventMap>(type: K, listener: (this: HTMLTagComponentElement, ev: TagComponentCustomEvent<HTMLTagComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLTagComponentElementEventMap>(type: K, listener: (this: HTMLTagComponentElement, ev: TagComponentCustomEvent<HTMLTagComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLTagComponentElement: {
-        prototype: HTMLTagComponentElement;
-        new (): HTMLTagComponentElement;
-    };
     interface HTMLNdTextElement extends Components.NdText, HTMLStencilElement {
     }
     var HTMLNdTextElement: {
@@ -570,6 +544,26 @@ declare global {
     var HTMLSelectComponentElement: {
         prototype: HTMLSelectComponentElement;
         new (): HTMLSelectComponentElement;
+    };
+    interface HTMLTagComponentElementEventMap {
+        "tagClick": void;
+        "tagClose": void;
+        "tagMouseEnter": void;
+        "tagMouseLeave": void;
+    }
+    interface HTMLTagComponentElement extends Components.TagComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTagComponentElementEventMap>(type: K, listener: (this: HTMLTagComponentElement, ev: TagComponentCustomEvent<HTMLTagComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTagComponentElementEventMap>(type: K, listener: (this: HTMLTagComponentElement, ev: TagComponentCustomEvent<HTMLTagComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTagComponentElement: {
+        prototype: HTMLTagComponentElement;
+        new (): HTMLTagComponentElement;
     };
     interface HTMLTestComponentElement extends Components.TestComponent, HTMLStencilElement {
     }
@@ -598,9 +592,9 @@ declare global {
         "loader-component": HTMLLoaderComponentElement;
         "modal-component": HTMLModalComponentElement;
         "my-component": HTMLMyComponentElement;
-        "tag-component": HTMLTagComponentElement;
         "nd-text": HTMLNdTextElement;
         "select-component": HTMLSelectComponentElement;
+        "tag-component": HTMLTagComponentElement;
         "test-component": HTMLTestComponentElement;
         "toast-component": HTMLToastComponentElement;
         "tooltip-component": HTMLTooltipComponentElement;
@@ -873,6 +867,45 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface NdText {
+        /**
+          * @default 'left'
+         */
+        "align"?: 'left' | 'center' | 'right' | 'justify';
+        "color"?: string;
+        "customClass"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        "href"?: string;
+        "htmlFor"?: string;
+        "maxLines"?: number;
+        /**
+          * @default '_self'
+         */
+        "target"?: '_blank' | '_self' | '_parent' | '_top';
+        /**
+          * @default false
+         */
+        "truncate"?: boolean;
+        /**
+          * @default 'p'
+         */
+        "variant"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'link' | 'error' | 'caption' | 'small';
+        /**
+          * @default 'normal'
+         */
+        "weight"?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
+    }
+    interface SelectComponent {
+        "class"?: string;
+        "data"?: [{ value: string; text: string }];
+        "name"?: string;
+        "onInputTarget"?: (event: SelectComponentCustomEvent<{ name: string; value: string }>) => void;
+        "text_error"?: string;
+        "text_label"?: string;
+    }
     interface TagComponent {
         /**
           * Color de fondo del tag
@@ -970,45 +1003,6 @@ declare namespace LocalJSX {
          */
         "width"?: string;
     }
-    interface NdText {
-        /**
-          * @default 'left'
-         */
-        "align"?: 'left' | 'center' | 'right' | 'justify';
-        "color"?: string;
-        "customClass"?: string;
-        /**
-          * @default false
-         */
-        "disabled"?: boolean;
-        "href"?: string;
-        "htmlFor"?: string;
-        "maxLines"?: number;
-        /**
-          * @default '_self'
-         */
-        "target"?: '_blank' | '_self' | '_parent' | '_top';
-        /**
-          * @default false
-         */
-        "truncate"?: boolean;
-        /**
-          * @default 'p'
-         */
-        "variant"?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'link' | 'error' | 'caption' | 'small';
-        /**
-          * @default 'normal'
-         */
-        "weight"?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
-    }
-    interface SelectComponent {
-        "class"?: string;
-        "data"?: [{ value: string; text: string }];
-        "name"?: string;
-        "onInputTarget"?: (event: SelectComponentCustomEvent<{ name: string; value: string }>) => void;
-        "text_error"?: string;
-        "text_label"?: string;
-    }
     interface TestComponent {
         "text_button"?: string;
     }
@@ -1034,9 +1028,9 @@ declare namespace LocalJSX {
         "loader-component": LoaderComponent;
         "modal-component": ModalComponent;
         "my-component": MyComponent;
-        "tag-component": TagComponent;
         "nd-text": NdText;
         "select-component": SelectComponent;
+        "tag-component": TagComponent;
         "test-component": TestComponent;
         "toast-component": ToastComponent;
         "tooltip-component": TooltipComponent;
@@ -1054,9 +1048,9 @@ declare module "@stencil/core" {
             "loader-component": LocalJSX.LoaderComponent & JSXBase.HTMLAttributes<HTMLLoaderComponentElement>;
             "modal-component": LocalJSX.ModalComponent & JSXBase.HTMLAttributes<HTMLModalComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "tag-component": LocalJSX.TagComponent & JSXBase.HTMLAttributes<HTMLTagComponentElement>;
             "nd-text": LocalJSX.NdText & JSXBase.HTMLAttributes<HTMLNdTextElement>;
             "select-component": LocalJSX.SelectComponent & JSXBase.HTMLAttributes<HTMLSelectComponentElement>;
+            "tag-component": LocalJSX.TagComponent & JSXBase.HTMLAttributes<HTMLTagComponentElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
             "toast-component": LocalJSX.ToastComponent & JSXBase.HTMLAttributes<HTMLToastComponentElement>;
             "tooltip-component": LocalJSX.TooltipComponent & JSXBase.HTMLAttributes<HTMLTooltipComponentElement>;

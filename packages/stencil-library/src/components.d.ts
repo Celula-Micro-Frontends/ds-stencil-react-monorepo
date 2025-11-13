@@ -122,9 +122,119 @@ export namespace Components {
           * @default 'text'
          */
         "type": string;
-        "value": string;
     }
-
+    interface LoaderComponent {
+        /**
+          * @default 'normal'
+         */
+        "animationDirection": 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+        /**
+          * @default 2
+         */
+        "animationDuration": number;
+        /**
+          * @default 'ease-in-out'
+         */
+        "animationEasing": string;
+        /**
+          * @default 'infinite'
+         */
+        "animationIterations": number | string | 'infinite';
+        /**
+          * @default '#3498db'
+         */
+        "color": string;
+        /**
+          * @default '#0FC2C0'
+         */
+        "color1": string;
+        /**
+          * @default '#0CABA8'
+         */
+        "color2": string;
+        /**
+          * @default '#008F8D'
+         */
+        "color3": string;
+        /**
+          * @default '#015A58'
+         */
+        "color4": string;
+        /**
+          * @default '#21daabff'
+         */
+        "color5": string;
+        /**
+          * @default false
+         */
+        "debug": boolean;
+        /**
+          * @default 1
+         */
+        "opacityFrom": number;
+        /**
+          * @default 1
+         */
+        "opacityTo": number;
+        /**
+          * @default 0
+         */
+        "rotateFrom": number;
+        /**
+          * @default 360
+         */
+        "rotateTo": number;
+        /**
+          * @default 1
+         */
+        "scaleFrom": number;
+        /**
+          * @default 1.2
+         */
+        "scaleTo": number;
+        /**
+          * @default true
+         */
+        "showText": boolean;
+        /**
+          * @default 50
+         */
+        "size": number;
+        /**
+          * @default 1
+         */
+        "speed": number;
+        /**
+          * @default 'rotate'
+         */
+        "svgAnimation": 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
+        "svgPath": string;
+        /**
+          * @default 50
+         */
+        "svgSize": number;
+        /**
+          * @default 'Cargando...'
+         */
+        "text": string;
+        "textColor": string;
+        /**
+          * @default 'ease-in-out'
+         */
+        "transition": string;
+        /**
+          * @default 0
+         */
+        "translateX": number;
+        /**
+          * @default 0
+         */
+        "translateY": number;
+        /**
+          * @default 'spinner'
+         */
+        "type": 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg';
+    }
     interface ModalComponent {
         /**
           * @default ''
@@ -142,230 +252,6 @@ export namespace Components {
           * @default ''
          */
         "width": string;
-    }
-    interface LoaderComponent {
-        /**
-          * @default 'normal'
-         */
-        "animationDirection": 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
-        /**
-          * @default 2
-         */
-        "animationDuration": number;
-        /**
-          * @default 'ease-in-out'
-         */
-        "animationEasing": string;
-        /**
-          * @default 'infinite'
-         */
-        "animationIterations": number | string | 'infinite';
-        /**
-          * @default '#3498db'
-         */
-        "color": string;
-        /**
-          * @default '#0FC2C0'
-         */
-        "color1": string;
-        /**
-          * @default '#0CABA8'
-         */
-        "color2": string;
-        /**
-          * @default '#008F8D'
-         */
-        "color3": string;
-        /**
-          * @default '#015A58'
-         */
-        "color4": string;
-        /**
-          * @default '#21daabff'
-         */
-        "color5": string;
-        /**
-          * @default false
-         */
-        "debug": boolean;
-        /**
-          * @default 1
-         */
-        "opacityFrom": number;
-        /**
-          * @default 1
-         */
-        "opacityTo": number;
-        /**
-          * @default 0
-         */
-        "rotateFrom": number;
-        /**
-          * @default 360
-         */
-        "rotateTo": number;
-        /**
-          * @default 1
-         */
-        "scaleFrom": number;
-        /**
-          * @default 1.2
-         */
-        "scaleTo": number;
-        /**
-          * @default true
-         */
-        "showText": boolean;
-        /**
-          * @default 50
-         */
-        "size": number;
-        /**
-          * @default 1
-         */
-        "speed": number;
-        /**
-          * @default 'rotate'
-         */
-        "svgAnimation": 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
-        "svgPath": string;
-        /**
-          * @default 50
-         */
-        "svgSize": number;
-        /**
-          * @default 'Cargando...'
-         */
-        "text": string;
-        "textColor": string;
-        /**
-          * @default 'ease-in-out'
-         */
-        "transition": string;
-        /**
-          * @default 0
-         */
-        "translateX": number;
-        /**
-          * @default 0
-         */
-        "translateY": number;
-        /**
-          * @default 'spinner'
-         */
-        "type": 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg';
-    }
-    interface LoaderComponent {
-        /**
-          * @default 'normal'
-         */
-        "animationDirection": 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
-        /**
-          * @default 2
-         */
-        "animationDuration": number;
-        /**
-          * @default 'ease-in-out'
-         */
-        "animationEasing": string;
-        /**
-          * @default 'infinite'
-         */
-        "animationIterations": number | string | 'infinite';
-        /**
-          * @default '#3498db'
-         */
-        "color": string;
-        /**
-          * @default '#0FC2C0'
-         */
-        "color1": string;
-        /**
-          * @default '#0CABA8'
-         */
-        "color2": string;
-        /**
-          * @default '#008F8D'
-         */
-        "color3": string;
-        /**
-          * @default '#015A58'
-         */
-        "color4": string;
-        /**
-          * @default '#21daabff'
-         */
-        "color5": string;
-        /**
-          * @default false
-         */
-        "debug": boolean;
-        /**
-          * @default 1
-         */
-        "opacityFrom": number;
-        /**
-          * @default 1
-         */
-        "opacityTo": number;
-        /**
-          * @default 0
-         */
-        "rotateFrom": number;
-        /**
-          * @default 360
-         */
-        "rotateTo": number;
-        /**
-          * @default 1
-         */
-        "scaleFrom": number;
-        /**
-          * @default 1.2
-         */
-        "scaleTo": number;
-        /**
-          * @default true
-         */
-        "showText": boolean;
-        /**
-          * @default 50
-         */
-        "size": number;
-        /**
-          * @default 1
-         */
-        "speed": number;
-        /**
-          * @default 'rotate'
-         */
-        "svgAnimation": 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
-        "svgPath": string;
-        /**
-          * @default 50
-         */
-        "svgSize": number;
-        /**
-          * @default 'Cargando...'
-         */
-        "text": string;
-        "textColor": string;
-        /**
-          * @default 'ease-in-out'
-         */
-        "transition": string;
-        /**
-          * @default 0
-         */
-        "translateX": number;
-        /**
-          * @default 0
-         */
-        "translateY": number;
-        /**
-          * @default 'spinner'
-         */
-        "type": 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg';
     }
     interface MyComponent {
         /**
@@ -729,9 +615,119 @@ declare namespace LocalJSX {
           * @default 'text'
          */
         "type"?: string;
-        "value"?: string;
     }
-    
+    interface LoaderComponent {
+        /**
+          * @default 'normal'
+         */
+        "animationDirection"?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+        /**
+          * @default 2
+         */
+        "animationDuration"?: number;
+        /**
+          * @default 'ease-in-out'
+         */
+        "animationEasing"?: string;
+        /**
+          * @default 'infinite'
+         */
+        "animationIterations"?: number | string | 'infinite';
+        /**
+          * @default '#3498db'
+         */
+        "color"?: string;
+        /**
+          * @default '#0FC2C0'
+         */
+        "color1"?: string;
+        /**
+          * @default '#0CABA8'
+         */
+        "color2"?: string;
+        /**
+          * @default '#008F8D'
+         */
+        "color3"?: string;
+        /**
+          * @default '#015A58'
+         */
+        "color4"?: string;
+        /**
+          * @default '#21daabff'
+         */
+        "color5"?: string;
+        /**
+          * @default false
+         */
+        "debug"?: boolean;
+        /**
+          * @default 1
+         */
+        "opacityFrom"?: number;
+        /**
+          * @default 1
+         */
+        "opacityTo"?: number;
+        /**
+          * @default 0
+         */
+        "rotateFrom"?: number;
+        /**
+          * @default 360
+         */
+        "rotateTo"?: number;
+        /**
+          * @default 1
+         */
+        "scaleFrom"?: number;
+        /**
+          * @default 1.2
+         */
+        "scaleTo"?: number;
+        /**
+          * @default true
+         */
+        "showText"?: boolean;
+        /**
+          * @default 50
+         */
+        "size"?: number;
+        /**
+          * @default 1
+         */
+        "speed"?: number;
+        /**
+          * @default 'rotate'
+         */
+        "svgAnimation"?: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
+        "svgPath"?: string;
+        /**
+          * @default 50
+         */
+        "svgSize"?: number;
+        /**
+          * @default 'Cargando...'
+         */
+        "text"?: string;
+        "textColor"?: string;
+        /**
+          * @default 'ease-in-out'
+         */
+        "transition"?: string;
+        /**
+          * @default 0
+         */
+        "translateX"?: number;
+        /**
+          * @default 0
+         */
+        "translateY"?: number;
+        /**
+          * @default 'spinner'
+         */
+        "type"?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg';
+    }
     interface ModalComponent {
         /**
           * @default ''
@@ -750,230 +746,6 @@ declare namespace LocalJSX {
           * @default ''
          */
         "width"?: string;
-    }
-    interface LoaderComponent {
-        /**
-          * @default 'normal'
-         */
-        "animationDirection"?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
-        /**
-          * @default 2
-         */
-        "animationDuration"?: number;
-        /**
-          * @default 'ease-in-out'
-         */
-        "animationEasing"?: string;
-        /**
-          * @default 'infinite'
-         */
-        "animationIterations"?: number | string | 'infinite';
-        /**
-          * @default '#3498db'
-         */
-        "color"?: string;
-        /**
-          * @default '#0FC2C0'
-         */
-        "color1"?: string;
-        /**
-          * @default '#0CABA8'
-         */
-        "color2"?: string;
-        /**
-          * @default '#008F8D'
-         */
-        "color3"?: string;
-        /**
-          * @default '#015A58'
-         */
-        "color4"?: string;
-        /**
-          * @default '#21daabff'
-         */
-        "color5"?: string;
-        /**
-          * @default false
-         */
-        "debug"?: boolean;
-        /**
-          * @default 1
-         */
-        "opacityFrom"?: number;
-        /**
-          * @default 1
-         */
-        "opacityTo"?: number;
-        /**
-          * @default 0
-         */
-        "rotateFrom"?: number;
-        /**
-          * @default 360
-         */
-        "rotateTo"?: number;
-        /**
-          * @default 1
-         */
-        "scaleFrom"?: number;
-        /**
-          * @default 1.2
-         */
-        "scaleTo"?: number;
-        /**
-          * @default true
-         */
-        "showText"?: boolean;
-        /**
-          * @default 50
-         */
-        "size"?: number;
-        /**
-          * @default 1
-         */
-        "speed"?: number;
-        /**
-          * @default 'rotate'
-         */
-        "svgAnimation"?: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
-        "svgPath"?: string;
-        /**
-          * @default 50
-         */
-        "svgSize"?: number;
-        /**
-          * @default 'Cargando...'
-         */
-        "text"?: string;
-        "textColor"?: string;
-        /**
-          * @default 'ease-in-out'
-         */
-        "transition"?: string;
-        /**
-          * @default 0
-         */
-        "translateX"?: number;
-        /**
-          * @default 0
-         */
-        "translateY"?: number;
-        /**
-          * @default 'spinner'
-         */
-        "type"?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg';
-    }
-    interface LoaderComponent {
-        /**
-          * @default 'normal'
-         */
-        "animationDirection"?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
-        /**
-          * @default 2
-         */
-        "animationDuration"?: number;
-        /**
-          * @default 'ease-in-out'
-         */
-        "animationEasing"?: string;
-        /**
-          * @default 'infinite'
-         */
-        "animationIterations"?: number | string | 'infinite';
-        /**
-          * @default '#3498db'
-         */
-        "color"?: string;
-        /**
-          * @default '#0FC2C0'
-         */
-        "color1"?: string;
-        /**
-          * @default '#0CABA8'
-         */
-        "color2"?: string;
-        /**
-          * @default '#008F8D'
-         */
-        "color3"?: string;
-        /**
-          * @default '#015A58'
-         */
-        "color4"?: string;
-        /**
-          * @default '#21daabff'
-         */
-        "color5"?: string;
-        /**
-          * @default false
-         */
-        "debug"?: boolean;
-        /**
-          * @default 1
-         */
-        "opacityFrom"?: number;
-        /**
-          * @default 1
-         */
-        "opacityTo"?: number;
-        /**
-          * @default 0
-         */
-        "rotateFrom"?: number;
-        /**
-          * @default 360
-         */
-        "rotateTo"?: number;
-        /**
-          * @default 1
-         */
-        "scaleFrom"?: number;
-        /**
-          * @default 1.2
-         */
-        "scaleTo"?: number;
-        /**
-          * @default true
-         */
-        "showText"?: boolean;
-        /**
-          * @default 50
-         */
-        "size"?: number;
-        /**
-          * @default 1
-         */
-        "speed"?: number;
-        /**
-          * @default 'rotate'
-         */
-        "svgAnimation"?: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
-        "svgPath"?: string;
-        /**
-          * @default 50
-         */
-        "svgSize"?: number;
-        /**
-          * @default 'Cargando...'
-         */
-        "text"?: string;
-        "textColor"?: string;
-        /**
-          * @default 'ease-in-out'
-         */
-        "transition"?: string;
-        /**
-          * @default 0
-         */
-        "translateX"?: number;
-        /**
-          * @default 0
-         */
-        "translateY"?: number;
-        /**
-          * @default 'spinner'
-         */
-        "type"?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg';
     }
     interface MyComponent {
         /**

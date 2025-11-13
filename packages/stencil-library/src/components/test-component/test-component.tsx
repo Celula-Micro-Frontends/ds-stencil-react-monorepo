@@ -23,7 +23,7 @@ export class MyComponent {
       
       <card-component card-title="Test" description="Esta es una descripcion" link="..."></card-component></>
       
-      <toast-component></toast-component></>
+      <toast-component title="Toast de prueba" description="Se genero un toast generico" autoclose={true}></toast-component></>
     );
   }
 }

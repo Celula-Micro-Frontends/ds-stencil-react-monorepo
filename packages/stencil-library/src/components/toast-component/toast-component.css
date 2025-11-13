@@ -15,15 +15,8 @@
     box-sizing: border-box;
 }
 
-body {
-    background: #1c1b20;
-    color: #fff;
-}
-
 .container {
-    background: #1c1b20;
     width: 90%;
-    max-width: 100px;
     margin: 80px auto;
 }
 
@@ -44,36 +37,36 @@ body {
 }
 
 .btn.success {
-    background: var(--success);
+    background: #3ab65c;
 }
 
 .btn.error {
-    background: var(--error);
+    background: #bf333b;
 }
 
 .btn.info {
-    background: var(--info);
+    background: #1898c0;
 }
 
 .btn.warning {
-    background: var(--warning);
+    background: #bc8c12;
 }
 
 /*hover*/
 .btn.success:hover {
-    background: var(--success-hover);
+    background: #2d8a46;
 }
 
 .btn.error:hover {
-    background: var(--error-hover);
+    background: #962a31;
 }
 
 .btn.info:hover {
-    background: var(--info-hover);
+    background: #147fa0;
 }
 
 .btn.warning:hover {
-    background: var(--warning-hover);
+    background: #9b7512;
 }
 
 /* Toast */
@@ -102,19 +95,19 @@ body {
 }
 
 .toast.success {
-    background: var(--success) ;
+    background: #3ab65c ;
 }
 
 .toast.error {
-    background: var(--error) ;
+    background: #bf333b ;
 }
 
 .toast.info {
-    background: var(--info) ;
+    background: #1898c0 ;
 }
 
 .toast.warning {
-    background: var(--warning) ;
+    background: #bc8c12 ;
 }
 
 .toast .content {

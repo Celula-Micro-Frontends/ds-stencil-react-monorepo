@@ -40,6 +40,10 @@ export namespace Components {
         "text_button": string;
     }
     interface ToastComponent {
+        "autoclose": boolean;
+        "description": string;
+        "title": string;
+        "type": string;
     }
 }
 declare global {
@@ -116,6 +120,10 @@ declare namespace LocalJSX {
         "text_button"?: string;
     }
     interface ToastComponent {
+        "autoclose"?: boolean;
+        "description"?: string;
+        "title"?: string;
+        "type"?: string;
     }
     interface IntrinsicElements {
         "card-component": CardComponent;

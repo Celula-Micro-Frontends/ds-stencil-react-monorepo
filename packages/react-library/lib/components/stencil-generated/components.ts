@@ -15,6 +15,7 @@ import { ButtonComponent as ButtonComponentElement, defineCustomElement as defin
 import { CardComponent as CardComponentElement, defineCustomElement as defineCardComponent } from "stencil-library/dist/components/card-component.js";
 import { CheckComponent as CheckComponentElement, defineCustomElement as defineCheckComponent } from "stencil-library/dist/components/check-component.js";
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
+import { LoaderComponent as LoaderComponentElement, defineCustomElement as defineLoaderComponent } from "stencil-library/dist/components/loader-component.js";
 import { ModalComponent as ModalComponentElement, defineCustomElement as defineModalComponent } from "stencil-library/dist/components/modal-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
 import { NdText as NdTextElement, defineCustomElement as defineNdText } from "stencil-library/dist/components/nd-text.js";
@@ -80,6 +81,17 @@ export const InputComponent: StencilReactComponent<InputComponentElement, InputC
     react: React,
     events: { onInputTarget: 'inputTarget' } as InputComponentEvents,
     defineCustomElement: defineInputComponent
+});
+
+export type LoaderComponentEvents = NonNullable<unknown>;
+
+export const LoaderComponent: StencilReactComponent<LoaderComponentElement, LoaderComponentEvents> = /*@__PURE__*/ createComponent<LoaderComponentElement, LoaderComponentEvents>({
+    tagName: 'loader-component',
+    elementClass: LoaderComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LoaderComponentEvents,
+    defineCustomElement: defineLoaderComponent
 });
 
 export type ModalComponentEvents = { onModalClosed: EventName<CustomEvent<void>> };

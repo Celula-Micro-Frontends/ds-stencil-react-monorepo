@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
 
-    <script type="module" src="/build/stencil-library.esm.js"></script>
-    <script nomodule src="/build/stencil-library.js"></script>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+
+      <script type="module" src="/build/stencil-library.esm.js"></script>
+  <script nomodule src="/build/stencil-library.js"></script>
+</head>
+
+<body>
+  <div style="padding: 20px;">
+    <h1>Stencil Components Demo</h1>
+
+    <h2>Test Component</h2>
+    <test-component text_button="Guardar" />
+    <div style="margin:16rem">
+
+      <loader-component type="bubbles" svg-size="100" text=" NTTDATA"></loader-component>
+
+
+
+
+    </div>
+
+  </div>
 
         <!-- <select-component text_label="Nombre" value="hola" text_error="prueba"></select-component> -->
     <!-- <input-component text_label="Nombre" type ="date" text_error="prueba"></input-component> -->

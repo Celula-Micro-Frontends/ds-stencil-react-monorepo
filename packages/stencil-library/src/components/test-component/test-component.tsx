@@ -19,6 +19,7 @@ export class MyComponent {
         <button class="button" onClick={this.onClick}>
           {this.text_button}
         </button>
+        <slot></slot>
       </div>
       
       <card-component card-title="Test" description="Esta es una descripcion" link="..."></card-component></>

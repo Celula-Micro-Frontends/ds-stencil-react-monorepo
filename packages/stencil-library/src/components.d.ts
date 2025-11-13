@@ -5,14 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { SizeButton, TypeButton, VariantButton, WidthMode } from "./components/button-component/button-interfaces";
 import { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
+export { SizeButton, TypeButton, VariantButton, WidthMode } from "./components/button-component/button-interfaces";
 export { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
 export namespace Components {
-    interface CardComponent {
-        "cardTitle": string;
-        "description": string;
-        "link": string;
-    }
     interface AppCarousel {
         /**
           * @default '400px'
@@ -42,6 +39,79 @@ export namespace Components {
           * @default '100%'
          */
         "width": string;
+    }
+    interface ButtonComponent {
+        /**
+          * The disabled state of the button.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+         */
+        "heading": string;
+        /**
+          * The html index of the button.
+          * @default 0
+         */
+        "htmlIndex": number;
+        /**
+          * The id of the button.
+         */
+        "idButton": string;
+        /**
+          * Show loading state in the button.
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * The name of the button.
+         */
+        "name"?: string;
+        /**
+          * The prefix icon of the button.
+         */
+        "prefixIcon"?: string;
+        /**
+          * The size of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default SIZE_BUTTON.REGULAR
+         */
+        "size": SizeButton;
+        /**
+          * The suffix icon of the button.
+         */
+        "suffixIcon"?: string;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+          * @default TYPE_BUTTON.SUBMIT
+         */
+        "type": TypeButton;
+        /**
+          * The variant of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default VARIANT_BUTTON.PRIMARY
+         */
+        "variant": VariantButton;
+        /**
+          * The mode width button default | full.
+          * @default WIDTH_MODE.DEFAULT
+         */
+        "widthMode"?: WidthMode;
+    }
+    interface CardComponent {
+        "cardTitle": string;
+        "description": string;
+        "link": string;
+    }
+    interface CheckComponent {
+        "class": string;
+        "name": string;
+        "text_error": string;
+        "text_label": string;
+        /**
+          * @default 'check'
+         */
+        "type": string;
+        "value": string;
     }
     interface InputComponent {
         "class": string;
@@ -116,6 +186,13 @@ export namespace Components {
          */
         "weight": 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
     }
+    interface SelectComponent {
+        "class": string;
+        "data": [{ value: string; text: string }];
+        "name": string;
+        "text_error": string;
+        "text_label": string;
+    }
     interface TestComponent {
         "text_button": string;
     }
@@ -132,6 +209,10 @@ export namespace Components {
         "alignment": TooltipAlignment;
         "text": string;
     }
+}
+export interface ButtonComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLButtonComponentElement;
 }
 export interface CheckComponentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -150,18 +231,57 @@ export interface SelectComponentCustomEvent<T> extends CustomEvent<T> {
     target: HTMLSelectComponentElement;
 }
 declare global {
-    interface HTMLCardComponentElement extends Components.CardComponent, HTMLStencilElement {
-    }
-    var HTMLCardComponentElement: {
-        prototype: HTMLCardComponentElement;
-        new (): HTMLCardComponentElement;
-    };
     interface HTMLAppCarouselElement extends Components.AppCarousel, HTMLStencilElement {
     }
     var HTMLAppCarouselElement: {
         prototype: HTMLAppCarouselElement;
         new (): HTMLAppCarouselElement;
     };
+    interface HTMLButtonComponentElementEventMap {
+        "buttonClick": {
+    id: string;
+  };
+    }
+    interface HTMLButtonComponentElement extends Components.ButtonComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLButtonComponentElementEventMap>(type: K, listener: (this: HTMLButtonComponentElement, ev: ButtonComponentCustomEvent<HTMLButtonComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLButtonComponentElementEventMap>(type: K, listener: (this: HTMLButtonComponentElement, ev: ButtonComponentCustomEvent<HTMLButtonComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLButtonComponentElement: {
+        prototype: HTMLButtonComponentElement;
+        new (): HTMLButtonComponentElement;
+    };
+    interface HTMLCardComponentElement extends Components.CardComponent, HTMLStencilElement {
+    }
+    var HTMLCardComponentElement: {
+        prototype: HTMLCardComponentElement;
+        new (): HTMLCardComponentElement;
+    };
+    interface HTMLCheckComponentElementEventMap {
+        "inputTarget": { name: string; value: string };
+    }
+    interface HTMLCheckComponentElement extends Components.CheckComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCheckComponentElementEventMap>(type: K, listener: (this: HTMLCheckComponentElement, ev: CheckComponentCustomEvent<HTMLCheckComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCheckComponentElementEventMap>(type: K, listener: (this: HTMLCheckComponentElement, ev: CheckComponentCustomEvent<HTMLCheckComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCheckComponentElement: {
+        prototype: HTMLCheckComponentElement;
+        new (): HTMLCheckComponentElement;
+    };
+    interface HTMLInputComponentElementEventMap {
+        "inputTarget": { name: string; value: string };
+    }
     interface HTMLInputComponentElement extends Components.InputComponent, HTMLStencilElement {
         addEventListener<K extends keyof HTMLInputComponentElementEventMap>(type: K, listener: (this: HTMLInputComponentElement, ev: InputComponentCustomEvent<HTMLInputComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -205,6 +325,23 @@ declare global {
         prototype: HTMLNdTextElement;
         new (): HTMLNdTextElement;
     };
+    interface HTMLSelectComponentElementEventMap {
+        "inputTarget": { name: string; value: string };
+    }
+    interface HTMLSelectComponentElement extends Components.SelectComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSelectComponentElementEventMap>(type: K, listener: (this: HTMLSelectComponentElement, ev: SelectComponentCustomEvent<HTMLSelectComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSelectComponentElementEventMap>(type: K, listener: (this: HTMLSelectComponentElement, ev: SelectComponentCustomEvent<HTMLSelectComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSelectComponentElement: {
+        prototype: HTMLSelectComponentElement;
+        new (): HTMLSelectComponentElement;
+    };
     interface HTMLTestComponentElement extends Components.TestComponent, HTMLStencilElement {
     }
     var HTMLTestComponentElement: {
@@ -224,23 +361,21 @@ declare global {
         new (): HTMLTooltipComponentElement;
     };
     interface HTMLElementTagNameMap {
-        "card-component": HTMLCardComponentElement;
         "app-carousel": HTMLAppCarouselElement;
+        "button-component": HTMLButtonComponentElement;
+        "card-component": HTMLCardComponentElement;
+        "check-component": HTMLCheckComponentElement;
         "input-component": HTMLInputComponentElement;
         "modal-component": HTMLModalComponentElement;
         "my-component": HTMLMyComponentElement;
         "nd-text": HTMLNdTextElement;
+        "select-component": HTMLSelectComponentElement;
         "test-component": HTMLTestComponentElement;
         "toast-component": HTMLToastComponentElement;
         "tooltip-component": HTMLTooltipComponentElement;
     }
 }
 declare namespace LocalJSX {
-    interface CardComponent {
-        "cardTitle"?: string;
-        "description"?: string;
-        "link"?: string;
-    }
     interface AppCarousel {
         /**
           * @default '400px'
@@ -270,6 +405,86 @@ declare namespace LocalJSX {
           * @default '100%'
          */
         "width"?: string;
+    }
+    interface ButtonComponent {
+        /**
+          * The disabled state of the button.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+         */
+        "heading"?: string;
+        /**
+          * The html index of the button.
+          * @default 0
+         */
+        "htmlIndex"?: number;
+        /**
+          * The id of the button.
+         */
+        "idButton": string;
+        /**
+          * Show loading state in the button.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * The name of the button.
+         */
+        "name"?: string;
+        /**
+          * The event emitted when the button is clicked.
+         */
+        "onButtonClick"?: (event: ButtonComponentCustomEvent<{
+    id: string;
+  }>) => void;
+        /**
+          * The prefix icon of the button.
+         */
+        "prefixIcon"?: string;
+        /**
+          * The size of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default SIZE_BUTTON.REGULAR
+         */
+        "size"?: SizeButton;
+        /**
+          * The suffix icon of the button.
+         */
+        "suffixIcon"?: string;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+          * @default TYPE_BUTTON.SUBMIT
+         */
+        "type"?: TypeButton;
+        /**
+          * The variant of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default VARIANT_BUTTON.PRIMARY
+         */
+        "variant"?: VariantButton;
+        /**
+          * The mode width button default | full.
+          * @default WIDTH_MODE.DEFAULT
+         */
+        "widthMode"?: WidthMode;
+    }
+    interface CardComponent {
+        "cardTitle"?: string;
+        "description"?: string;
+        "link"?: string;
+    }
+    interface CheckComponent {
+        "class"?: string;
+        "name"?: string;
+        "onInputTarget"?: (event: CheckComponentCustomEvent<{ name: string; value: string }>) => void;
+        "text_error"?: string;
+        "text_label"?: string;
+        /**
+          * @default 'check'
+         */
+        "type"?: string;
+        "value"?: string;
     }
     interface InputComponent {
         "class"?: string;
@@ -346,6 +561,14 @@ declare namespace LocalJSX {
          */
         "weight"?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
     }
+    interface SelectComponent {
+        "class"?: string;
+        "data"?: [{ value: string; text: string }];
+        "name"?: string;
+        "onInputTarget"?: (event: SelectComponentCustomEvent<{ name: string; value: string }>) => void;
+        "text_error"?: string;
+        "text_label"?: string;
+    }
     interface TestComponent {
         "text_button"?: string;
     }
@@ -363,12 +586,15 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface IntrinsicElements {
-        "card-component": CardComponent;
         "app-carousel": AppCarousel;
+        "button-component": ButtonComponent;
+        "card-component": CardComponent;
+        "check-component": CheckComponent;
         "input-component": InputComponent;
         "modal-component": ModalComponent;
         "my-component": MyComponent;
         "nd-text": NdText;
+        "select-component": SelectComponent;
         "test-component": TestComponent;
         "toast-component": ToastComponent;
         "tooltip-component": TooltipComponent;
@@ -378,12 +604,15 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "card-component": LocalJSX.CardComponent & JSXBase.HTMLAttributes<HTMLCardComponentElement>;
             "app-carousel": LocalJSX.AppCarousel & JSXBase.HTMLAttributes<HTMLAppCarouselElement>;
+            "button-component": LocalJSX.ButtonComponent & JSXBase.HTMLAttributes<HTMLButtonComponentElement>;
+            "card-component": LocalJSX.CardComponent & JSXBase.HTMLAttributes<HTMLCardComponentElement>;
+            "check-component": LocalJSX.CheckComponent & JSXBase.HTMLAttributes<HTMLCheckComponentElement>;
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
             "modal-component": LocalJSX.ModalComponent & JSXBase.HTMLAttributes<HTMLModalComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "nd-text": LocalJSX.NdText & JSXBase.HTMLAttributes<HTMLNdTextElement>;
+            "select-component": LocalJSX.SelectComponent & JSXBase.HTMLAttributes<HTMLSelectComponentElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
             "toast-component": LocalJSX.ToastComponent & JSXBase.HTMLAttributes<HTMLToastComponentElement>;
             "tooltip-component": LocalJSX.TooltipComponent & JSXBase.HTMLAttributes<HTMLTooltipComponentElement>;

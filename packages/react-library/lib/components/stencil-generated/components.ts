@@ -11,11 +11,16 @@ import type { EventName, StencilReactComponent } from '@stencil/react-output-tar
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 import { AppCarousel as AppCarouselElement, defineCustomElement as defineAppCarousel } from "stencil-library/dist/components/app-carousel.js";
+import { ButtonComponent as ButtonComponentElement, defineCustomElement as defineButtonComponent } from "stencil-library/dist/components/button-component.js";
+import { CheckComponent as CheckComponentElement, defineCustomElement as defineCheckComponent } from "stencil-library/dist/components/check-component.js";
+import { DatepickerComponent as DatepickerComponentElement, defineCustomElement as defineDatepickerComponent } from "stencil-library/dist/components/datepicker-component.js";
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
 import { ModalComponent as ModalComponentElement, defineCustomElement as defineModalComponent } from "stencil-library/dist/components/modal-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
 import { NdText as NdTextElement, defineCustomElement as defineNdText } from "stencil-library/dist/components/nd-text.js";
+import { SelectComponent as SelectComponentElement, defineCustomElement as defineSelectComponent } from "stencil-library/dist/components/select-component.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
+import { TooltipComponent as TooltipComponentElement, defineCustomElement as defineTooltipComponent } from "stencil-library/dist/components/tooltip-component.js";
 
 export type AppCarouselEvents = NonNullable<unknown>;
 
@@ -28,7 +33,44 @@ export const AppCarousel: StencilReactComponent<AppCarouselElement, AppCarouselE
     defineCustomElement: defineAppCarousel
 });
 
-export type InputComponentEvents = NonNullable<unknown>;
+export type ButtonComponentEvents = {
+    onButtonClick: EventName<CustomEvent<{
+        id: string;
+    }>>
+};
+
+export const ButtonComponent: StencilReactComponent<ButtonComponentElement, ButtonComponentEvents> = /*@__PURE__*/ createComponent<ButtonComponentElement, ButtonComponentEvents>({
+    tagName: 'button-component',
+    elementClass: ButtonComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onButtonClick: 'buttonClick' } as ButtonComponentEvents,
+    defineCustomElement: defineButtonComponent
+});
+
+export type CheckComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
+
+export const CheckComponent: StencilReactComponent<CheckComponentElement, CheckComponentEvents> = /*@__PURE__*/ createComponent<CheckComponentElement, CheckComponentEvents>({
+    tagName: 'check-component',
+    elementClass: CheckComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onInputTarget: 'inputTarget' } as CheckComponentEvents,
+    defineCustomElement: defineCheckComponent
+});
+
+export type DatepickerComponentEvents = NonNullable<unknown>;
+
+export const DatepickerComponent: StencilReactComponent<DatepickerComponentElement, DatepickerComponentEvents> = /*@__PURE__*/ createComponent<DatepickerComponentElement, DatepickerComponentEvents>({
+    tagName: 'datepicker-component',
+    elementClass: DatepickerComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as DatepickerComponentEvents,
+    defineCustomElement: defineDatepickerComponent
+});
+
+export type InputComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
 
 export const InputComponent: StencilReactComponent<InputComponentElement, InputComponentEvents> = /*@__PURE__*/ createComponent<InputComponentElement, InputComponentEvents>({
     tagName: 'input-component',
@@ -70,6 +112,17 @@ export const NdText: StencilReactComponent<NdTextElement, NdTextEvents> = /*@__P
     react: React,
     events: {} as NdTextEvents,
     defineCustomElement: defineNdText
+});
+
+export type SelectComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
+
+export const SelectComponent: StencilReactComponent<SelectComponentElement, SelectComponentEvents> = /*@__PURE__*/ createComponent<SelectComponentElement, SelectComponentEvents>({
+    tagName: 'select-component',
+    elementClass: SelectComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onInputTarget: 'inputTarget' } as SelectComponentEvents,
+    defineCustomElement: defineSelectComponent
 });
 
 export type TestComponentEvents = NonNullable<unknown>;

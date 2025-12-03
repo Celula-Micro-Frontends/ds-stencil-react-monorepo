@@ -1,6 +1,6 @@
 {
   "name": "stencil-library",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -40,7 +40,8 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "pack:dev": "npm version patch || npm run build && npm pack"
   },
   "devDependencies": {
     "@stencil/core": "^4.27.1",
@@ -52,5 +53,8 @@
     "jest-cli": "^29.7.0",
     "puppeteer": "^24.3.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "flatpickr": "^4.6.13"
+  }
 }

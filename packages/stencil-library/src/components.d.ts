@@ -109,8 +109,19 @@ export namespace Components {
         "value": string;
     }
     interface DatepickerComponent {
+        /**
+          * @default 'Y-m-d'
+         */
+        "dateFormat"?: string;
         "datepickersData": datepickerParameters[];
-        "range": boolean;
+        /**
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * @default 'row'
+         */
+        "orientation"?: string;
     }
     interface InputComponent {
         "class": string;
@@ -468,8 +479,19 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface DatepickerComponent {
+        /**
+          * @default 'Y-m-d'
+         */
+        "dateFormat"?: string;
         "datepickersData"?: datepickerParameters[];
-        "range"?: boolean;
+        /**
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * @default 'row'
+         */
+        "orientation"?: string;
     }
     interface InputComponent {
         "class"?: string;

@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
 
-    <script type="module" src="/build/stencil-library.esm.js"></script>
-    <script nomodule src="/build/stencil-library.js"></script>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+
+      <script type="module" src="/build/stencil-library.esm.js"></script>
+  <script nomodule src="/build/stencil-library.js"></script>
+</head>
+
+<body>
+  <div style="padding: 20px; font-family: Arial, sans-serif;">
+    <h1>Stencil Components Demo</h1>
+
+    <!-- <h2>Test Component</h2>
+    <test-component text_button="Guardar" />
+    <div style="margin:16rem"> -->
+
+      <!-- <loader-component type="bubbles" svg-size="100" text=" NTTDATA"></loader-component> -->
+
+    </div>
+
+    <section style="margin: 20px 0;">
+      <h3>Tags de Tecnología</h3>
+      <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <tag-component text="JavaScript" bg-color="#F7DF1E" text-color="#000000" clickable="true" icon="👾"
+          closable="true"></tag-component>
+        <tag-component text="React" bg-color="#61DAFB" text-color="#000000" clickable="true"></tag-component>
+        <tag-component text="TypeScript" bg-color="#3178C6" clickable="true" closable="true"></tag-component>
+        <tag-component text="Vue.js" bg-color="#42B883" clickable="true" closable="true"></tag-component>
+        <tag-component text="Angular" bg-color="#DD0031" clickable="true" closable="true"></tag-component>
+        <tag-component text="Node.js" bg-color="#339933" clickable="true" closable="true"></tag-component>
+      </div>
+    </section>
+
+  </div>
 
         <!-- <select-component text_label="Nombre" value="hola" text_error="prueba"></select-component> -->
-    <input-component text_label="Nombre" type ="date" text_error="prueba"></input-component>
+    <!-- <input-component text_label="Nombre" type ="date" text_error="prueba"></input-component> -->
     <!-- <check-component text_label="Nombre" value="hola" text_error="prueba"></check-component> -->
     <!-- <modal-component is_open title="Hola">
       <div>

@@ -11,11 +11,19 @@ import type { EventName, StencilReactComponent } from '@stencil/react-output-tar
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 import { AppCarousel as AppCarouselElement, defineCustomElement as defineAppCarousel } from "stencil-library/dist/components/app-carousel.js";
+import { ButtonComponent as ButtonComponentElement, defineCustomElement as defineButtonComponent } from "stencil-library/dist/components/button-component.js";
+import { CardComponent as CardComponentElement, defineCustomElement as defineCardComponent } from "stencil-library/dist/components/card-component.js";
+import { CheckComponent as CheckComponentElement, defineCustomElement as defineCheckComponent } from "stencil-library/dist/components/check-component.js";
 import { InputComponent as InputComponentElement, defineCustomElement as defineInputComponent } from "stencil-library/dist/components/input-component.js";
+import { LoaderComponent as LoaderComponentElement, defineCustomElement as defineLoaderComponent } from "stencil-library/dist/components/loader-component.js";
 import { ModalComponent as ModalComponentElement, defineCustomElement as defineModalComponent } from "stencil-library/dist/components/modal-component.js";
 import { MyComponent as MyComponentElement, defineCustomElement as defineMyComponent } from "stencil-library/dist/components/my-component.js";
 import { NdText as NdTextElement, defineCustomElement as defineNdText } from "stencil-library/dist/components/nd-text.js";
+import { SelectComponent as SelectComponentElement, defineCustomElement as defineSelectComponent } from "stencil-library/dist/components/select-component.js";
+import { TagComponent as TagComponentElement, defineCustomElement as defineTagComponent } from "stencil-library/dist/components/tag-component.js";
 import { TestComponent as TestComponentElement, defineCustomElement as defineTestComponent } from "stencil-library/dist/components/test-component.js";
+import { ToastComponent as ToastComponentElement, defineCustomElement as defineToastComponent } from "stencil-library/dist/components/toast-component.js";
+import { TooltipComponent as TooltipComponentElement, defineCustomElement as defineTooltipComponent } from "stencil-library/dist/components/tooltip-component.js";
 
 export type AppCarouselEvents = NonNullable<unknown>;
 
@@ -28,7 +36,44 @@ export const AppCarousel: StencilReactComponent<AppCarouselElement, AppCarouselE
     defineCustomElement: defineAppCarousel
 });
 
-export type InputComponentEvents = NonNullable<unknown>;
+export type ButtonComponentEvents = {
+    onButtonClick: EventName<CustomEvent<{
+        id: string;
+    }>>
+};
+
+export const ButtonComponent: StencilReactComponent<ButtonComponentElement, ButtonComponentEvents> = /*@__PURE__*/ createComponent<ButtonComponentElement, ButtonComponentEvents>({
+    tagName: 'button-component',
+    elementClass: ButtonComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onButtonClick: 'buttonClick' } as ButtonComponentEvents,
+    defineCustomElement: defineButtonComponent
+});
+
+export type CardComponentEvents = NonNullable<unknown>;
+
+export const CardComponent: StencilReactComponent<CardComponentElement, CardComponentEvents> = /*@__PURE__*/ createComponent<CardComponentElement, CardComponentEvents>({
+    tagName: 'card-component',
+    elementClass: CardComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as CardComponentEvents,
+    defineCustomElement: defineCardComponent
+});
+
+export type CheckComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
+
+export const CheckComponent: StencilReactComponent<CheckComponentElement, CheckComponentEvents> = /*@__PURE__*/ createComponent<CheckComponentElement, CheckComponentEvents>({
+    tagName: 'check-component',
+    elementClass: CheckComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onInputTarget: 'inputTarget' } as CheckComponentEvents,
+    defineCustomElement: defineCheckComponent
+});
+
+export type InputComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
 
 export const InputComponent: StencilReactComponent<InputComponentElement, InputComponentEvents> = /*@__PURE__*/ createComponent<InputComponentElement, InputComponentEvents>({
     tagName: 'input-component',
@@ -37,6 +82,17 @@ export const InputComponent: StencilReactComponent<InputComponentElement, InputC
     react: React,
     events: { onInputTarget: 'inputTarget' } as InputComponentEvents,
     defineCustomElement: defineInputComponent
+});
+
+export type LoaderComponentEvents = NonNullable<unknown>;
+
+export const LoaderComponent: StencilReactComponent<LoaderComponentElement, LoaderComponentEvents> = /*@__PURE__*/ createComponent<LoaderComponentElement, LoaderComponentEvents>({
+    tagName: 'loader-component',
+    elementClass: LoaderComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as LoaderComponentEvents,
+    defineCustomElement: defineLoaderComponent
 });
 
 export type ModalComponentEvents = { onModalClosed: EventName<CustomEvent<void>> };
@@ -72,6 +128,38 @@ export const NdText: StencilReactComponent<NdTextElement, NdTextEvents> = /*@__P
     defineCustomElement: defineNdText
 });
 
+export type SelectComponentEvents = { onInputTarget: EventName<CustomEvent<{ name: string; value: string }>> };
+
+export const SelectComponent: StencilReactComponent<SelectComponentElement, SelectComponentEvents> = /*@__PURE__*/ createComponent<SelectComponentElement, SelectComponentEvents>({
+    tagName: 'select-component',
+    elementClass: SelectComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onInputTarget: 'inputTarget' } as SelectComponentEvents,
+    defineCustomElement: defineSelectComponent
+});
+
+export type TagComponentEvents = {
+    onTagClick: EventName<CustomEvent<void>>,
+    onTagClose: EventName<CustomEvent<void>>,
+    onTagMouseEnter: EventName<CustomEvent<void>>,
+    onTagMouseLeave: EventName<CustomEvent<void>>
+};
+
+export const TagComponent: StencilReactComponent<TagComponentElement, TagComponentEvents> = /*@__PURE__*/ createComponent<TagComponentElement, TagComponentEvents>({
+    tagName: 'tag-component',
+    elementClass: TagComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onTagClick: 'tagClick',
+        onTagClose: 'tagClose',
+        onTagMouseEnter: 'tagMouseEnter',
+        onTagMouseLeave: 'tagMouseLeave'
+    } as TagComponentEvents,
+    defineCustomElement: defineTagComponent
+});
+
 export type TestComponentEvents = NonNullable<unknown>;
 
 export const TestComponent: StencilReactComponent<TestComponentElement, TestComponentEvents> = /*@__PURE__*/ createComponent<TestComponentElement, TestComponentEvents>({
@@ -81,6 +169,17 @@ export const TestComponent: StencilReactComponent<TestComponentElement, TestComp
     react: React,
     events: {} as TestComponentEvents,
     defineCustomElement: defineTestComponent
+});
+
+export type ToastComponentEvents = NonNullable<unknown>;
+
+export const ToastComponent: StencilReactComponent<ToastComponentElement, ToastComponentEvents> = /*@__PURE__*/ createComponent<ToastComponentElement, ToastComponentEvents>({
+    tagName: 'toast-component',
+    elementClass: ToastComponentElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as ToastComponentEvents,
+    defineCustomElement: defineToastComponent
 });
 
 export type TooltipComponentEvents = NonNullable<unknown>;

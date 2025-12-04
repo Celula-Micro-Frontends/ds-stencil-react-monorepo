@@ -5,7 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { SizeButton, TypeButton, VariantButton, WidthMode } from "./components/button-component/button-interfaces";
 import { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
+export { SizeButton, TypeButton, VariantButton, WidthMode } from "./components/button-component/button-interfaces";
 export { TooltipAlignment } from "./components/tooltip-component/tooltip-component.interface";
 export namespace Components {
     interface AppCarousel {
@@ -38,6 +40,79 @@ export namespace Components {
          */
         "width": string;
     }
+    interface ButtonComponent {
+        /**
+          * The disabled state of the button.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+         */
+        "heading": string;
+        /**
+          * The html index of the button.
+          * @default 0
+         */
+        "htmlIndex": number;
+        /**
+          * The id of the button.
+         */
+        "idButton": string;
+        /**
+          * Show loading state in the button.
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * The name of the button.
+         */
+        "name"?: string;
+        /**
+          * The prefix icon of the button.
+         */
+        "prefixIcon"?: string;
+        /**
+          * The size of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default SIZE_BUTTON.REGULAR
+         */
+        "size": SizeButton;
+        /**
+          * The suffix icon of the button.
+         */
+        "suffixIcon"?: string;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+          * @default TYPE_BUTTON.SUBMIT
+         */
+        "type": TypeButton;
+        /**
+          * The variant of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default VARIANT_BUTTON.PRIMARY
+         */
+        "variant": VariantButton;
+        /**
+          * The mode width button default | full.
+          * @default WIDTH_MODE.DEFAULT
+         */
+        "widthMode"?: WidthMode;
+    }
+    interface CardComponent {
+        "cardTitle": string;
+        "description": string;
+        "link": string;
+    }
+    interface CheckComponent {
+        "class": string;
+        "name": string;
+        "text_error": string;
+        "text_label": string;
+        /**
+          * @default 'check'
+         */
+        "type": string;
+        "value": string;
+    }
     interface InputComponent {
         "class": string;
         "name": string;
@@ -47,6 +122,118 @@ export namespace Components {
           * @default 'text'
          */
         "type": string;
+    }
+    interface LoaderComponent {
+        /**
+          * @default 'normal'
+         */
+        "animationDirection": 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+        /**
+          * @default 2
+         */
+        "animationDuration": number;
+        /**
+          * @default 'ease-in-out'
+         */
+        "animationEasing": string;
+        /**
+          * @default 'infinite'
+         */
+        "animationIterations": number | string | 'infinite';
+        /**
+          * @default '#3498db'
+         */
+        "color": string;
+        /**
+          * @default '#0FC2C0'
+         */
+        "color1": string;
+        /**
+          * @default '#0CABA8'
+         */
+        "color2": string;
+        /**
+          * @default '#008F8D'
+         */
+        "color3": string;
+        /**
+          * @default '#015A58'
+         */
+        "color4": string;
+        /**
+          * @default '#21daabff'
+         */
+        "color5": string;
+        /**
+          * @default false
+         */
+        "debug": boolean;
+        /**
+          * @default 1
+         */
+        "opacityFrom": number;
+        /**
+          * @default 1
+         */
+        "opacityTo": number;
+        /**
+          * @default 0
+         */
+        "rotateFrom": number;
+        /**
+          * @default 360
+         */
+        "rotateTo": number;
+        /**
+          * @default 1
+         */
+        "scaleFrom": number;
+        /**
+          * @default 1.2
+         */
+        "scaleTo": number;
+        /**
+          * @default true
+         */
+        "showText": boolean;
+        /**
+          * @default 50
+         */
+        "size": number;
+        /**
+          * @default 1
+         */
+        "speed": number;
+        /**
+          * @default 'rotate'
+         */
+        "svgAnimation": 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
+        "svgPath": string;
+        /**
+          * @default 50
+         */
+        "svgSize": number;
+        /**
+          * @default 'Cargando...'
+         */
+        "text": string;
+        "textColor": string;
+        /**
+          * @default 'ease-in-out'
+         */
+        "transition": string;
+        /**
+          * @default 0
+         */
+        "translateX": number;
+        /**
+          * @default 0
+         */
+        "translateY": number;
+        /**
+          * @default 'spinner'
+         */
+        "type": 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg';
     }
     interface ModalComponent {
         /**
@@ -111,8 +298,102 @@ export namespace Components {
          */
         "weight": 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
     }
+    interface SelectComponent {
+        "class": string;
+        "data": [{ value: string; text: string }];
+        "name": string;
+        "text_error": string;
+        "text_label": string;
+    }
+    interface TagComponent {
+        /**
+          * Color de fondo del tag
+          * @default '#0FC2C0'
+         */
+        "bgColor": string;
+        /**
+          * Color del borde (para variantes outlined y ghost)
+          * @default '#0FC2C0'
+         */
+        "borderColor": string;
+        /**
+          * Radio del borde personalizado
+         */
+        "borderRadius": string;
+        /**
+          * Si el tag es clickeable
+          * @default false
+         */
+        "clickable": boolean;
+        /**
+          * Si el tag tiene botón de cierre
+          * @default false
+         */
+        "closable": boolean;
+        /**
+          * Si el tag está deshabilitado
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Tamaño de fuente personalizado
+         */
+        "fontSize": string;
+        /**
+          * Altura personalizada (opcional)
+         */
+        "height": string;
+        /**
+          * Icono personalizado (puede ser un emoji o HTML)
+         */
+        "icon": string;
+        /**
+          * Posición del icono: 'left' o 'right'
+          * @default 'left'
+         */
+        "iconPosition": 'left' | 'right';
+        /**
+          * Padding personalizado
+         */
+        "padding": string;
+        /**
+          * Forma del tag: 'rounded', 'pill', 'square'
+          * @default 'rounded'
+         */
+        "shape": 'rounded' | 'pill' | 'square';
+        /**
+          * Tamaño del tag: 'small', 'medium', 'large'
+          * @default 'medium'
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * Texto del tag
+          * @default 'Tag'
+         */
+        "text": string;
+        /**
+          * Color del texto
+          * @default '#ffffff'
+         */
+        "textColor": string;
+        /**
+          * Variante del tag: 'filled', 'outlined', 'ghost'
+          * @default 'filled'
+         */
+        "variant": 'filled' | 'outlined' | 'ghost';
+        /**
+          * Ancho personalizado (opcional)
+         */
+        "width": string;
+    }
     interface TestComponent {
         "text_button": string;
+    }
+    interface ToastComponent {
+        "autoclose": boolean;
+        "description": string;
+        "title": string;
+        "type": string;
     }
     interface TooltipComponent {
         /**
@@ -121,6 +402,10 @@ export namespace Components {
         "alignment": TooltipAlignment;
         "text": string;
     }
+}
+export interface ButtonComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLButtonComponentElement;
 }
 export interface CheckComponentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -138,6 +423,10 @@ export interface SelectComponentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSelectComponentElement;
 }
+export interface TagComponentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTagComponentElement;
+}
 declare global {
     interface HTMLAppCarouselElement extends Components.AppCarousel, HTMLStencilElement {
     }
@@ -145,6 +434,51 @@ declare global {
         prototype: HTMLAppCarouselElement;
         new (): HTMLAppCarouselElement;
     };
+    interface HTMLButtonComponentElementEventMap {
+        "buttonClick": {
+    id: string;
+  };
+    }
+    interface HTMLButtonComponentElement extends Components.ButtonComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLButtonComponentElementEventMap>(type: K, listener: (this: HTMLButtonComponentElement, ev: ButtonComponentCustomEvent<HTMLButtonComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLButtonComponentElementEventMap>(type: K, listener: (this: HTMLButtonComponentElement, ev: ButtonComponentCustomEvent<HTMLButtonComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLButtonComponentElement: {
+        prototype: HTMLButtonComponentElement;
+        new (): HTMLButtonComponentElement;
+    };
+    interface HTMLCardComponentElement extends Components.CardComponent, HTMLStencilElement {
+    }
+    var HTMLCardComponentElement: {
+        prototype: HTMLCardComponentElement;
+        new (): HTMLCardComponentElement;
+    };
+    interface HTMLCheckComponentElementEventMap {
+        "inputTarget": { name: string; value: string };
+    }
+    interface HTMLCheckComponentElement extends Components.CheckComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCheckComponentElementEventMap>(type: K, listener: (this: HTMLCheckComponentElement, ev: CheckComponentCustomEvent<HTMLCheckComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCheckComponentElementEventMap>(type: K, listener: (this: HTMLCheckComponentElement, ev: CheckComponentCustomEvent<HTMLCheckComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCheckComponentElement: {
+        prototype: HTMLCheckComponentElement;
+        new (): HTMLCheckComponentElement;
+    };
+    interface HTMLInputComponentElementEventMap {
+        "inputTarget": { name: string; value: string };
+    }
     interface HTMLInputComponentElement extends Components.InputComponent, HTMLStencilElement {
         addEventListener<K extends keyof HTMLInputComponentElementEventMap>(type: K, listener: (this: HTMLInputComponentElement, ev: InputComponentCustomEvent<HTMLInputComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -158,6 +492,12 @@ declare global {
     var HTMLInputComponentElement: {
         prototype: HTMLInputComponentElement;
         new (): HTMLInputComponentElement;
+    };
+    interface HTMLLoaderComponentElement extends Components.LoaderComponent, HTMLStencilElement {
+    }
+    var HTMLLoaderComponentElement: {
+        prototype: HTMLLoaderComponentElement;
+        new (): HTMLLoaderComponentElement;
     };
     interface HTMLModalComponentElementEventMap {
         "modalClosed": void;
@@ -188,11 +528,54 @@ declare global {
         prototype: HTMLNdTextElement;
         new (): HTMLNdTextElement;
     };
+    interface HTMLSelectComponentElementEventMap {
+        "inputTarget": { name: string; value: string };
+    }
+    interface HTMLSelectComponentElement extends Components.SelectComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSelectComponentElementEventMap>(type: K, listener: (this: HTMLSelectComponentElement, ev: SelectComponentCustomEvent<HTMLSelectComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSelectComponentElementEventMap>(type: K, listener: (this: HTMLSelectComponentElement, ev: SelectComponentCustomEvent<HTMLSelectComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSelectComponentElement: {
+        prototype: HTMLSelectComponentElement;
+        new (): HTMLSelectComponentElement;
+    };
+    interface HTMLTagComponentElementEventMap {
+        "tagClick": void;
+        "tagClose": void;
+        "tagMouseEnter": void;
+        "tagMouseLeave": void;
+    }
+    interface HTMLTagComponentElement extends Components.TagComponent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTagComponentElementEventMap>(type: K, listener: (this: HTMLTagComponentElement, ev: TagComponentCustomEvent<HTMLTagComponentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTagComponentElementEventMap>(type: K, listener: (this: HTMLTagComponentElement, ev: TagComponentCustomEvent<HTMLTagComponentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTagComponentElement: {
+        prototype: HTMLTagComponentElement;
+        new (): HTMLTagComponentElement;
+    };
     interface HTMLTestComponentElement extends Components.TestComponent, HTMLStencilElement {
     }
     var HTMLTestComponentElement: {
         prototype: HTMLTestComponentElement;
         new (): HTMLTestComponentElement;
+    };
+    interface HTMLToastComponentElement extends Components.ToastComponent, HTMLStencilElement {
+    }
+    var HTMLToastComponentElement: {
+        prototype: HTMLToastComponentElement;
+        new (): HTMLToastComponentElement;
     };
     interface HTMLTooltipComponentElement extends Components.TooltipComponent, HTMLStencilElement {
     }
@@ -202,11 +585,18 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "app-carousel": HTMLAppCarouselElement;
+        "button-component": HTMLButtonComponentElement;
+        "card-component": HTMLCardComponentElement;
+        "check-component": HTMLCheckComponentElement;
         "input-component": HTMLInputComponentElement;
+        "loader-component": HTMLLoaderComponentElement;
         "modal-component": HTMLModalComponentElement;
         "my-component": HTMLMyComponentElement;
         "nd-text": HTMLNdTextElement;
+        "select-component": HTMLSelectComponentElement;
+        "tag-component": HTMLTagComponentElement;
         "test-component": HTMLTestComponentElement;
+        "toast-component": HTMLToastComponentElement;
         "tooltip-component": HTMLTooltipComponentElement;
     }
 }
@@ -241,6 +631,86 @@ declare namespace LocalJSX {
          */
         "width"?: string;
     }
+    interface ButtonComponent {
+        /**
+          * The disabled state of the button.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+         */
+        "heading"?: string;
+        /**
+          * The html index of the button.
+          * @default 0
+         */
+        "htmlIndex"?: number;
+        /**
+          * The id of the button.
+         */
+        "idButton": string;
+        /**
+          * Show loading state in the button.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * The name of the button.
+         */
+        "name"?: string;
+        /**
+          * The event emitted when the button is clicked.
+         */
+        "onButtonClick"?: (event: ButtonComponentCustomEvent<{
+    id: string;
+  }>) => void;
+        /**
+          * The prefix icon of the button.
+         */
+        "prefixIcon"?: string;
+        /**
+          * The size of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default SIZE_BUTTON.REGULAR
+         */
+        "size"?: SizeButton;
+        /**
+          * The suffix icon of the button.
+         */
+        "suffixIcon"?: string;
+        /**
+          * The type of the button. BUTTON, SUBMIT, RESET.
+          * @default TYPE_BUTTON.SUBMIT
+         */
+        "type"?: TypeButton;
+        /**
+          * The variant of the button. PRIMARY, SECONDARY, TERTIARY, BORDERLESS.
+          * @default VARIANT_BUTTON.PRIMARY
+         */
+        "variant"?: VariantButton;
+        /**
+          * The mode width button default | full.
+          * @default WIDTH_MODE.DEFAULT
+         */
+        "widthMode"?: WidthMode;
+    }
+    interface CardComponent {
+        "cardTitle"?: string;
+        "description"?: string;
+        "link"?: string;
+    }
+    interface CheckComponent {
+        "class"?: string;
+        "name"?: string;
+        "onInputTarget"?: (event: CheckComponentCustomEvent<{ name: string; value: string }>) => void;
+        "text_error"?: string;
+        "text_label"?: string;
+        /**
+          * @default 'check'
+         */
+        "type"?: string;
+        "value"?: string;
+    }
     interface InputComponent {
         "class"?: string;
         "name"?: string;
@@ -251,6 +721,118 @@ declare namespace LocalJSX {
           * @default 'text'
          */
         "type"?: string;
+    }
+    interface LoaderComponent {
+        /**
+          * @default 'normal'
+         */
+        "animationDirection"?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+        /**
+          * @default 2
+         */
+        "animationDuration"?: number;
+        /**
+          * @default 'ease-in-out'
+         */
+        "animationEasing"?: string;
+        /**
+          * @default 'infinite'
+         */
+        "animationIterations"?: number | string | 'infinite';
+        /**
+          * @default '#3498db'
+         */
+        "color"?: string;
+        /**
+          * @default '#0FC2C0'
+         */
+        "color1"?: string;
+        /**
+          * @default '#0CABA8'
+         */
+        "color2"?: string;
+        /**
+          * @default '#008F8D'
+         */
+        "color3"?: string;
+        /**
+          * @default '#015A58'
+         */
+        "color4"?: string;
+        /**
+          * @default '#21daabff'
+         */
+        "color5"?: string;
+        /**
+          * @default false
+         */
+        "debug"?: boolean;
+        /**
+          * @default 1
+         */
+        "opacityFrom"?: number;
+        /**
+          * @default 1
+         */
+        "opacityTo"?: number;
+        /**
+          * @default 0
+         */
+        "rotateFrom"?: number;
+        /**
+          * @default 360
+         */
+        "rotateTo"?: number;
+        /**
+          * @default 1
+         */
+        "scaleFrom"?: number;
+        /**
+          * @default 1.2
+         */
+        "scaleTo"?: number;
+        /**
+          * @default true
+         */
+        "showText"?: boolean;
+        /**
+          * @default 50
+         */
+        "size"?: number;
+        /**
+          * @default 1
+         */
+        "speed"?: number;
+        /**
+          * @default 'rotate'
+         */
+        "svgAnimation"?: 'rotate' | 'scale' | 'pulse-scale' | 'bounce' | 'translate' | 'custom' | 'none';
+        "svgPath"?: string;
+        /**
+          * @default 50
+         */
+        "svgSize"?: number;
+        /**
+          * @default 'Cargando...'
+         */
+        "text"?: string;
+        "textColor"?: string;
+        /**
+          * @default 'ease-in-out'
+         */
+        "transition"?: string;
+        /**
+          * @default 0
+         */
+        "translateX"?: number;
+        /**
+          * @default 0
+         */
+        "translateY"?: number;
+        /**
+          * @default 'spinner'
+         */
+        "type"?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'dual-ring' | 'ellipsis' | "bubbles" | 'ripple' | 'svg';
     }
     interface ModalComponent {
         /**
@@ -316,8 +898,119 @@ declare namespace LocalJSX {
          */
         "weight"?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
     }
+    interface SelectComponent {
+        "class"?: string;
+        "data"?: [{ value: string; text: string }];
+        "name"?: string;
+        "onInputTarget"?: (event: SelectComponentCustomEvent<{ name: string; value: string }>) => void;
+        "text_error"?: string;
+        "text_label"?: string;
+    }
+    interface TagComponent {
+        /**
+          * Color de fondo del tag
+          * @default '#0FC2C0'
+         */
+        "bgColor"?: string;
+        /**
+          * Color del borde (para variantes outlined y ghost)
+          * @default '#0FC2C0'
+         */
+        "borderColor"?: string;
+        /**
+          * Radio del borde personalizado
+         */
+        "borderRadius"?: string;
+        /**
+          * Si el tag es clickeable
+          * @default false
+         */
+        "clickable"?: boolean;
+        /**
+          * Si el tag tiene botón de cierre
+          * @default false
+         */
+        "closable"?: boolean;
+        /**
+          * Si el tag está deshabilitado
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Tamaño de fuente personalizado
+         */
+        "fontSize"?: string;
+        /**
+          * Altura personalizada (opcional)
+         */
+        "height"?: string;
+        /**
+          * Icono personalizado (puede ser un emoji o HTML)
+         */
+        "icon"?: string;
+        /**
+          * Posición del icono: 'left' o 'right'
+          * @default 'left'
+         */
+        "iconPosition"?: 'left' | 'right';
+        /**
+          * Evento emitido cuando se hace click en el tag
+         */
+        "onTagClick"?: (event: TagComponentCustomEvent<void>) => void;
+        /**
+          * Evento emitido cuando se cierra el tag
+         */
+        "onTagClose"?: (event: TagComponentCustomEvent<void>) => void;
+        /**
+          * Evento emitido cuando el mouse entra en el tag
+         */
+        "onTagMouseEnter"?: (event: TagComponentCustomEvent<void>) => void;
+        /**
+          * Evento emitido cuando el mouse sale del tag
+         */
+        "onTagMouseLeave"?: (event: TagComponentCustomEvent<void>) => void;
+        /**
+          * Padding personalizado
+         */
+        "padding"?: string;
+        /**
+          * Forma del tag: 'rounded', 'pill', 'square'
+          * @default 'rounded'
+         */
+        "shape"?: 'rounded' | 'pill' | 'square';
+        /**
+          * Tamaño del tag: 'small', 'medium', 'large'
+          * @default 'medium'
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * Texto del tag
+          * @default 'Tag'
+         */
+        "text"?: string;
+        /**
+          * Color del texto
+          * @default '#ffffff'
+         */
+        "textColor"?: string;
+        /**
+          * Variante del tag: 'filled', 'outlined', 'ghost'
+          * @default 'filled'
+         */
+        "variant"?: 'filled' | 'outlined' | 'ghost';
+        /**
+          * Ancho personalizado (opcional)
+         */
+        "width"?: string;
+    }
     interface TestComponent {
         "text_button"?: string;
+    }
+    interface ToastComponent {
+        "autoclose"?: boolean;
+        "description"?: string;
+        "title"?: string;
+        "type"?: string;
     }
     interface TooltipComponent {
         /**
@@ -328,11 +1021,18 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "app-carousel": AppCarousel;
+        "button-component": ButtonComponent;
+        "card-component": CardComponent;
+        "check-component": CheckComponent;
         "input-component": InputComponent;
+        "loader-component": LoaderComponent;
         "modal-component": ModalComponent;
         "my-component": MyComponent;
         "nd-text": NdText;
+        "select-component": SelectComponent;
+        "tag-component": TagComponent;
         "test-component": TestComponent;
+        "toast-component": ToastComponent;
         "tooltip-component": TooltipComponent;
     }
 }
@@ -341,11 +1041,18 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-carousel": LocalJSX.AppCarousel & JSXBase.HTMLAttributes<HTMLAppCarouselElement>;
+            "button-component": LocalJSX.ButtonComponent & JSXBase.HTMLAttributes<HTMLButtonComponentElement>;
+            "card-component": LocalJSX.CardComponent & JSXBase.HTMLAttributes<HTMLCardComponentElement>;
+            "check-component": LocalJSX.CheckComponent & JSXBase.HTMLAttributes<HTMLCheckComponentElement>;
             "input-component": LocalJSX.InputComponent & JSXBase.HTMLAttributes<HTMLInputComponentElement>;
+            "loader-component": LocalJSX.LoaderComponent & JSXBase.HTMLAttributes<HTMLLoaderComponentElement>;
             "modal-component": LocalJSX.ModalComponent & JSXBase.HTMLAttributes<HTMLModalComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "nd-text": LocalJSX.NdText & JSXBase.HTMLAttributes<HTMLNdTextElement>;
+            "select-component": LocalJSX.SelectComponent & JSXBase.HTMLAttributes<HTMLSelectComponentElement>;
+            "tag-component": LocalJSX.TagComponent & JSXBase.HTMLAttributes<HTMLTagComponentElement>;
             "test-component": LocalJSX.TestComponent & JSXBase.HTMLAttributes<HTMLTestComponentElement>;
+            "toast-component": LocalJSX.ToastComponent & JSXBase.HTMLAttributes<HTMLToastComponentElement>;
             "tooltip-component": LocalJSX.TooltipComponent & JSXBase.HTMLAttributes<HTMLTooltipComponentElement>;
         }
     }

@@ -1,4 +1,4 @@
-# test-component
+# card-component
 
 
 
@@ -9,22 +9,22 @@
 
 | Property      | Attribute     | Description | Type     | Default     |
 | ------------- | ------------- | ----------- | -------- | ----------- |
-| `text_button` | `text_button` |             | `string` | `undefined` |
+| `cardTitle`   | `card-title`  |             | `string` | `undefined` |
+| `description` | `description` |             | `string` | `undefined` |
+| `link`        | `link`        |             | `string` | `undefined` |
 
 
 ## Dependencies
 
-### Depends on
+### Used by
 
-- [card-component](../card-component)
-- [toast-component](../toast-component)
+ - [test-component](../test-component)
 
 ### Graph
 ```mermaid
 graph TD;
   test-component --> card-component
-  test-component --> toast-component
-  style test-component fill:#f9f,stroke:#333,stroke-width:4px
+  style card-component fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

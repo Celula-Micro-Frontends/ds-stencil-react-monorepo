@@ -14,12 +14,17 @@ export class MyComponent {
 
   render() {
     return (
-      <div class="container">
+      <><><div class="container">
         <h1>Este es un componente de prueba</h1>
         <button class="button" onClick={this.onClick}>
           {this.text_button}
         </button>
+        <slot></slot>
       </div>
+      
+      <card-component card-title="Test" description="Esta es una descripcion" link="..."></card-component></>
+      
+      <toast-component title="Toast de prueba" description="Se genero un toast generico" autoclose={true}></toast-component></>
     );
   }
 }
